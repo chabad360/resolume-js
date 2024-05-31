@@ -1,4 +1,5 @@
 import {components} from "./schema";
+import {Composition} from "./resolume";
 
 export enum ActionType {
     Set = "set",
@@ -138,8 +139,6 @@ export function isErrorMessage(message: Message): message is ErrorMessage {
 }
 
 export type TypedMessage = ParameterMessage | SourcesMessage | EffectsMessage;
-
-export type Composition = components["schemas"]["Composition"]
 
 export type Message = TypedMessage | Composition | ErrorMessage;
 

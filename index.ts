@@ -1,10 +1,8 @@
-import {ResolumeAPI, WebSocketAPI} from "./resolume";
+import {ResolumeAPI, WebSocketAPI, Composition} from "./resolume";
 import {components} from "./schema";
 import {ActionType} from "./ws";
 
 export {WebSocketAPI, components, ActionType}
-
-type Composition = components["schemas"]["Composition"];
 
 async function interactWithResolume() {
 

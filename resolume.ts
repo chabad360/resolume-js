@@ -11,22 +11,22 @@ import {
     ParameterMessage
 } from "./ws";
 
-type APIResponse = components["schemas"]["ProductInfo"];
-type Deck = components["schemas"]["Deck"];
-type Composition = components["schemas"]["Composition"];
-type Column = components["schemas"]["Column"];
-type Clip = components["schemas"]["Clip"];
-type TransportTimeline = components["schemas"]["TransportTimeline"];
-type Layer = components["schemas"]["Layer"];
-type ProductInfo = components["schemas"]["ProductInfo"];
-type VideoEffect = components["schemas"]["VideoEffect"];
-type VideoTrackClip = components["schemas"]["VideoTrackClip"];
+export type APIResponse = components["schemas"]["ProductInfo"];
+export type Deck = components["schemas"]["Deck"];
+export type Composition = components["schemas"]["Composition"];
+export type Column = components["schemas"]["Column"];
+export type Clip = components["schemas"]["Clip"];
+export type TransportTimeline = components["schemas"]["TransportTimeline"];
+export type Layer = components["schemas"]["Layer"];
+export type ProductInfo = components["schemas"]["ProductInfo"];
+export type VideoEffect = components["schemas"]["VideoEffect"];
+export type VideoTrackClip = components["schemas"]["VideoTrackClip"];
 
-type StringParameter = components["schemas"]["StringParameter"];
-type ColorParameter = components["schemas"]["ColorParameter"];
-type ChoiceParameter = components["schemas"]["ChoiceParameter"];
-type ParameterCollection = components["schemas"]["ParameterCollection"];
-type TextParameter = components["schemas"]["TextParameter"];
+export type StringParameter = components["schemas"]["StringParameter"];
+export type ColorParameter = components["schemas"]["ColorParameter"];
+export type ChoiceParameter = components["schemas"]["ChoiceParameter"];
+export type ParameterCollection = components["schemas"]["ParameterCollection"];
+export type TextParameter = components["schemas"]["TextParameter"];
 
 
 export class ResolumeAPI {
