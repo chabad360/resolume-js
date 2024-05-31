@@ -1,5 +1,8 @@
 import {ResolumeAPI, WebSocketAPI} from "./resolume";
 import {components} from "./schema";
+import {ActionType} from "./ws";
+
+export {WebSocketAPI, components, ActionType}
 
 type Composition = components["schemas"]["Composition"];
 
@@ -26,7 +29,7 @@ async function interactWithResolume() {
     });
 
     const resolumeWS = new WebSocketAPI(hostValue, portValue);
-    resolumeWS.addEventListener("composition", (data: Composition) => {
+    resolumeWS.on("composition", (data: Composition) => {
         console.log("Composition is", data);
     })
 

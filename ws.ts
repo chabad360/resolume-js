@@ -12,6 +12,7 @@ export interface PostAction {
     action: ActionType.Post;
     path: string;
     body?: string;
+    id?: string;
 }
 
 export interface SetAction {
@@ -23,7 +24,7 @@ export interface SetAction {
 export interface TriggerAction {
     action: ActionType.Trigger;
     parameter: string;
-    value: boolean;
+    value?: boolean;
 }
 
 export interface SubscribeAction {
@@ -43,20 +44,46 @@ export enum MessageType {
 }
 
 export interface TriggerParameter {
-    valuetype?: "ParamTrigger";
-    id?: number;
+    valuetype: "ParamTrigger";
+    id: number;
     value?: boolean;
 }
 
-export type Parameter = components["schemas"]["StringParameter"]
-    | components["schemas"]["TextParameter"]
-    | components["schemas"]["BooleanParameter"]
-    | components["schemas"]["IntegerParameter"]
-    | components["schemas"]["ColorParameter"]
-    | components["schemas"]["RangeParameter"]
-    | components["schemas"]["ChoiceParameter"]
-    | components["schemas"]["EventParameter"]
-    | TriggerParameter;
+type ValueType<Type, vt extends string> = {
+    [Property in keyof Type as Exclude<Property, "view">]-?: Type[Property] ;
+} & {
+    valuetype: vt;
+    view?: never;
+}
+
+export type StringParameter = ValueType<components["schemas"]["StringParameter"], "ParamString">
+
+export type TextParameter = ValueType<components["schemas"]["TextParameter"], "ParamText">
+
+export type BooleanParameter = ValueType<components["schemas"]["BooleanParameter"], "ParamBoolean">
+
+export type IntegerParameter = ValueType<components["schemas"]["IntegerParameter"], "ParamInteger">
+
+export type ColorParameter = ValueType<components["schemas"]["ColorParameter"], "ParamColor">
+
+export type RangeParameter = ValueType<components["schemas"]["RangeParameter"], "ParamRange">
+
+export type ChoiceParameter = ValueType<components["schemas"]["ChoiceParameter"], "ParamChoice">
+
+export type StateParameter = ValueType<components["schemas"]["ChoiceParameter"], "ParamState">
+
+export type EventParameter = ValueType<components["schemas"]["EventParameter"], "ParamEvent">
+
+export type Parameter = StringParameter |
+    TextParameter |
+    BooleanParameter |
+    IntegerParameter |
+    ColorParameter |
+    RangeParameter |
+    ChoiceParameter |
+    StateParameter |
+    // EventParameter |
+    TriggerParameter;
 
 export type ParameterMessage = Parameter & {
     type: MessageType.ParameterUpdate | MessageType.ParameterSet | MessageType.Subscribed | MessageType.Unsubscribed;
@@ -119,5 +146,3 @@ export type Message = TypedMessage | Composition | ErrorMessage;
 export function isCompositionMessage(message: Message): message is Composition {
     return (message as Composition).name !== undefined;
 }
-
-export type ParameterCallback = (data: ParameterMessage) => void;

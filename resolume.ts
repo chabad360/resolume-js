@@ -8,7 +8,7 @@ import {
     isEffectMessage,
     isParameterMessage,
     isSourcesMessage,
-    ParameterCallback
+    ParameterMessage
 } from "./ws";
 
 type APIResponse = components["schemas"]["ProductInfo"];
@@ -168,10 +168,13 @@ export class ResolumeAPI {
 }
 
 type CompositionCallback = (comp: Composition) => void
+export type ParameterCallback = (data: ParameterMessage) => void;
 
 export class WebSocketAPI {
     ws: WebSocket;
+
     events=  new Map<string | number, ParameterCallback[]>();
+    allEvents: ParameterCallback;
     sources: components["schemas"]["Sources"];
     effects: {
         Video: Effect[],
@@ -186,7 +189,7 @@ export class WebSocketAPI {
         };
     }
 
-    addEventListener(parameter: string | number | "composition", cb: ParameterCallback | CompositionCallback){
+    public on(parameter: string | number | "composition", cb: ParameterCallback | CompositionCallback){
         if (parameter === "composition") {
             this.compListeners.push(cb as CompositionCallback);
             return
@@ -202,7 +205,11 @@ export class WebSocketAPI {
         this.events.get(param).push(cb as ParameterCallback);
     }
 
-    removeEventListener(parameter: string | number, cb: ParameterCallback) {
+    public onAll(cb: ParameterCallback) {
+        this.allEvents = cb;
+    }
+
+    public removeListener(parameter: string | number, cb: ParameterCallback) {
         const param = paramToString(parameter);
         if (this.events.has(param)) {
             const index = this.events.get(param).indexOf(cb);
@@ -211,35 +218,44 @@ export class WebSocketAPI {
             }
             if (this.events.get(param).length === 0) {
                 this.unsubscribe(param);
+                this.events.delete(param);
             }
         }
     }
 
 
-    private subscribe(parameter: string) {
+    public subscribe(parameter: string) {
         this.send({
             action: ActionType.Subscribe,
             parameter: parameter
         });
     }
 
-    private unsubscribe(parameter: string) {
+    public unsubscribe(parameter: string | undefined) {
         this.send({
             action: ActionType.Unsubscribe,
             parameter: parameter
         });
     }
 
-    send(action: Action) {
+    public send(action: Action) {
         this.ws?.send(JSON.stringify(action))
     }
 
     private onMessage(data: any) {
         const message = JSON.parse(data);
         if (isParameterMessage(message)) {
-            const param = paramToString(message.id || message.path);
-            if (this.events.has(param)) {
-                this.events.get(param).forEach((cb) => {
+            if (this.allEvents !== undefined) {
+                this.allEvents(message);
+            }
+            const id = paramToString(message.id);
+            if (this.events.has(id)) {
+                this.events.get(id).forEach((cb) => {
+                    cb(message);
+                });
+            }
+            if (this.events.has(message.path)) {
+                (this.events.get(message.path) as ParameterCallback[]).forEach((cb) => {
                     cb(message);
                 });
             }
@@ -252,10 +268,19 @@ export class WebSocketAPI {
             this.compListeners.forEach((cb) => {
                 cb(message);
             });
+        } else {
+            console.log("Unknown message type", message);
         }
+    }
+
+    public destroy() {
+        if (this.ws.readyState === this.ws.OPEN) this.ws.close();
     }
 }
 
-function paramToString(param: string | number) {
+export function paramToString(param: string | number): string {
+    if (param === 0 || param === "0") {
+        return "";
+    }
     return typeof param === 'string' ? param : `/parameter/by-id/${param}`;
 }
