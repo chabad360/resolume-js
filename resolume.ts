@@ -3,9 +3,9 @@ import WebSocket = require('isomorphic-ws');
 import {
     Action,
     ActionType,
-    Effect,
+    Effect, ErrorMessage,
     isCompositionMessage,
-    isEffectMessage,
+    isEffectMessage, isErrorMessage,
     isParameterMessage,
     isSourcesMessage,
     ParameterMessage
@@ -181,6 +181,7 @@ export class WebSocketAPI {
         Audio: Effect[],
     }
     compListeners = new Array<(data: Composition) => void>()
+    errorListeners = new Array<(error: ErrorMessage) => void>()
 
     constructor(host: string, port: number, protocol?: "ws" | "wss") {
         this.ws = new WebSocket(`${protocol ? protocol : "ws" }://${host}:${port}/api/v1`);
@@ -207,6 +208,10 @@ export class WebSocketAPI {
 
     public onAll(cb: ParameterCallback) {
         this.allEvents = cb;
+    }
+
+    public onError(cb: (error: ErrorMessage) => void) {
+        this.errorListeners.push(cb);
     }
 
     public removeListener(parameter: string | number, cb: ParameterCallback) {
@@ -261,15 +266,17 @@ export class WebSocketAPI {
             }
         } else if (isSourcesMessage(message)) {
             this.sources = message.value;
-            console.log(message.value);
+            // console.log(message.value);
         } else if (isEffectMessage(message)) {
             this.effects = message.value;
         } else if (isCompositionMessage(message)) {
             this.compListeners.forEach((cb) => {
                 cb(message);
             });
-        } else {
-            console.log("Unknown message type", message);
+        } else if (isErrorMessage(message)) {
+            this.errorListeners.forEach((cb) => {
+                cb(message);
+            });
         }
     }
 
