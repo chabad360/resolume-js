@@ -3,3353 +3,9997 @@
  * Do not make direct changes to the file.
  */
 
-
-export interface paths {
-  "/product": {
-    /**
-     * Retrieve product information 
-     * @description This contains the product name and version information
-     */
-    get: operations["get_product"];
-  };
-  "/sources": {
-    /**
-     * Retrieve available sources for clips 
-     * @description Retrieve all sources available to generate clips
-     */
-    get: operations["get_sources"];
-  };
-  "/composition": {
-    /**
-     * Retrieve the complete composition 
-     * @description This contains the composition properties, all the decks, layers and clips
-     */
-    get: operations["list_composition"];
-    /**
-     * Update the complete composition 
-     * @description This allows for updating all parameters in a composition, its decks, layers and clips
-     */
-    put: operations["replace_composition"];
-  };
-  "/composition/{parameter}/reset": {
-    /**
-     * Reset a parameter in the composition to its default value. 
-     * @description This resets a parameter on the main composition to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    post: operations["reset_composition_param"];
-    parameters: {
-        /** @description Name of the parameter to reset */
-      path: {
-        parameter: string;
-      };
+export type paths = {
+    "/product": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve product information
+         * @description This contains the product name and version information
+         */
+        get: operations["get_product"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/columns/{column-index}": {
-    /**
-     * Retrieve column properties by index 
-     * @description Returns a single column
-     */
-    get: operations["get_column"];
-    /**
-     * Update specific column by index 
-     * @description Update a single column
-     */
-    put: operations["replace_column"];
-    parameters: {
-        /** @description Column index to use (1-based) */
-      path: {
-        "column-index": number;
-      };
+    "/effects": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve available sources for clips
+         * @description Retrieve all effects available for using on clips, layer(group)s and the composition
+         */
+        get: operations["get_effects"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/columns/{column-index}/{parameter}/reset": {
-    /**
-     * Reset a parameter in a column to its default value. 
-     * @description This resets a parameter on the indexed column to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    post: operations["reset_column_param"];
-    parameters: {
-        /** @description Column index to reset parameter on (1-based) */
-        /** @description Name of the parameter to reset */
-      path: {
-        "column-index": number;
-        parameter: string;
-      };
+    "/sources": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve available sources for clips
+         * @description Retrieve all sources available to generate clips
+         */
+        get: operations["get_sources"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/columns/{column-index}/connect": {
-    /**
-     * Connect the column by index 
-     * @description Connect the column, possibly activating it
-     */
-    post: operations["column_connect"];
-    parameters: {
-        /** @description Column index to connect (1-based) */
-      path: {
-        "column-index": number;
-      };
+    "/composition": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve the complete composition
+         * @description This contains the composition properties, all the decks, layers and clips
+         */
+        get: operations["list_composition"];
+        /**
+         * Update the complete composition
+         * @description This allows for updating all parameters in a composition, its decks, layers and clips
+         */
+        put: operations["replace_composition"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/columns/by-id/{column-id}": {
-    /**
-     * Retrieve column properties by id 
-     * @description Returns a single column
-     */
-    get: operations["get_column_by_id"];
-    /**
-     * Update specific column by id 
-     * @description Update a single column
-     */
-    put: operations["replace_column_by_id"];
-    parameters: {
-        /** @description The unique column id */
-      path: {
-        "column-id": number;
-      };
+    "/composition/action": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Undo or redo previously executed actions
+         * @description With this call an action can be either undone, or an action that was undone can be executed again
+         */
+        post: operations["composition_action"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/columns/by-id/{column-id}/{parameter}/reset": {
-    /**
-     * Reset a parameter in a column to its default value. 
-     * @description This resets a parameter on the indexed column to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    post: operations["reset_column_param_by_id"];
-    parameters: {
-        /** @description The unique id of the column to reset parameter on */
-        /** @description Name of the parameter to reset */
-      path: {
-        "column-id": number;
-        parameter: string;
-      };
+    "/composition/effects/video/move": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Move an effect to the end of the composition
+         * @description Take an existing effect instance, and move it to the end of the composition
+         */
+        post: operations["move_effect_composition"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/columns/by-id/{column-id}/connect": {
-    /**
-     * Connect the column by id 
-     * @description Connect the column, possibly activating it
-     */
-    post: operations["column_connect_by_id"];
-    parameters: {
-        /** @description The unique identifier for the column to connect */
-      path: {
-        "column-id": number;
-      };
+    "/composition/effects/video/move/{offset}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The offset at which to insert the effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Move an effect to the end of the composition
+         * @description Take an existing effect instance, and move it to the index inside the composition
+         */
+        post: operations["move_effect_composition_offset"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layers/{layer-index}": {
-    /**
-     * Retrieve layer properties and clip info by index 
-     * @description Returns a single layer and all of its clips
-     */
-    get: operations["get_layer"];
-    /**
-     * Update specified layer and/or clips by index 
-     * @description Updates a single layer and all of its clips
-     */
-    put: operations["replace_layer"];
-    parameters: {
-        /** @description Layer index to use (1-based) */
-      path: {
-        "layer-index": number;
-      };
+    "/composition/effects/video/add": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to the entire composition
+         * @description Add a global effect, which affects everything within the composition
+         */
+        post: operations["add_effect_composition"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layers/selected": {
-    /**
-     * Retrieve layer properties and clip info for the selected layers 
-     * @description Returns a single layer and all of its clips
-     */
-    get: operations["list_selected_layer"];
-    /**
-     * Update selected layer and/or clips 
-     * @description Updates a single layer and all of its clips
-     */
-    put: operations["replace_selected_layer"];
-  };
-  "/composition/layers/{layer-index}/{parameter}/reset": {
-    /**
-     * Reset a parameter in a layer to its default value. 
-     * @description This resets a parameter on the indexed layer to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    post: operations["reset_layer_param"];
-    parameters: {
-        /** @description Layer index to reset param on (1-based) */
-        /** @description Name of the parameter to reset */
-      path: {
-        "layer-index": number;
-        parameter: string;
-      };
+    "/composition/effects/video/add/{offset}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to the entire composition
+         * @description Add a global effect, which affects everything within the composition
+         */
+        post: operations["add_composition_effect_offset"];
+        /**
+         * Remove an effect from the entire composition
+         * @description Remove a global effect, which affects everything within the composition
+         */
+        delete: operations["delete_composition_effect"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layers/selected/{parameter}/reset": {
-    /**
-     * Reset a parameter in the selected layer to its default value. 
-     * @description This resets a parameter on the selected layer to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    post: operations["reset_selected_layer_param"];
-    parameters: {
-        /** @description Name of the parameter to reset */
-      path: {
-        parameter: string;
-      };
+    "/composition/{parameter}/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reset a parameter in the composition to its default value.
+         * @description This resets a parameter on the main composition to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
+         */
+        post: operations["reset_composition_param"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layers/{layer-index}/select": {
-    /**
-     * Select the layer by index 
-     * @description Select the layer at the given index
-     */
-    post: operations["layer_select"];
-    parameters: {
-        /** @description Layer index to select (1-based) */
-      path: {
-        "layer-index": number;
-      };
+    "/composition/columns/{column-index}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Column index to use (1-based) */
+                "column-index": number;
+            };
+            cookie?: never;
+        };
+        /**
+         * Retrieve column properties by index
+         * @description Returns a single column
+         */
+        get: operations["get_column"];
+        /**
+         * Update specific column by index
+         * @description Update a single column
+         */
+        put: operations["replace_column"];
+        post?: never;
+        /**
+         * Remove a column by index
+         * @description Remove the column with the given index
+         */
+        delete: operations["delete_column"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layers/{layer-index}/clear": {
-    /**
-     * Disconnects any playing clips in the layer by index 
-     * @description Disconnects any playing clips in the layer by index
-     */
-    post: operations["layer_clear"];
-    parameters: {
-        /** @description Layer index to clear (1-based) */
-      path: {
-        "layer-index": number;
-      };
+    "/composition/columns/{column-index}/duplicate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Column index to use (1-based) */
+                "column-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Duplicate the given column
+         * @description Take the given column and make a copy of it. All properties will be the same, except for the unique identifiers. The new column is inserted into the composition next to the existing one.
+         */
+        post: operations["composition_duplicate_column"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layers/selected/clear": {
-    /**
-     * Disconnects any playing clips in the selected layer 
-     * @description Disconnects any playing clips in the selected layer
-     */
-    post: operations["selected_layer_clear"];
-  };
-  "/composition/layers/{layer-index}/clearclips": {
-    /**
-     * Clears all clips in the layer by index 
-     * @description Clears all clips in the layer by index, removing all tracks and settings from the clips
-     */
-    post: operations["layer_clear_clips"];
-    parameters: {
-        /** @description Layer index to clear clips from (1-based) */
-      path: {
-        "layer-index": number;
-      };
+    "/composition/columns/add": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add a new column to the composition
+         * @description This adds a new column either at the end, or somewhere else in the composition
+         */
+        post: operations["composition_add_column"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layers/selected/clearclips": {
-    /**
-     * Clears all clips in the selected layer 
-     * @description Clears all clips in the selected layer, removing all tracks and settings from the clips
-     */
-    post: operations["selected_layer_clear_clips"];
-  };
-  "/composition/layers/by-id/{layer-id}": {
-    /**
-     * Retrieve layer properties and clip info by id 
-     * @description Returns a single layer and all of its clips
-     */
-    get: operations["get_layer_by_id"];
-    /**
-     * Update specified layer and/or clips by id 
-     * @description Updates a single layer and all of its clips
-     */
-    put: operations["replace_layer_by_id"];
-    parameters: {
-        /** @description The unique layer id to use */
-      path: {
-        "layer-id": number;
-      };
+    "/composition/columns/{column-index}/{parameter}/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Column index to reset parameter on (1-based) */
+                "column-index": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reset a parameter in a column to its default value.
+         * @description This resets a parameter on the indexed column to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
+         */
+        post: operations["reset_column_param"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layers/by-id/{layer-id}/{parameter}/reset": {
-    /**
-     * Reset a parameter in a layer to its default value. 
-     * @description This resets a parameter on the indexed layer to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    post: operations["reset_layer_param_by_id"];
-    parameters: {
-        /** @description The unique layer id to reset param on (1-based) */
-        /** @description Name of the parameter to reset */
-      path: {
-        "layer-id": number;
-        parameter: string;
-      };
+    "/composition/columns/{column-index}/connect": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Column index to connect (1-based) */
+                "column-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Connect the column by index
+         * @description Connect the column, possibly activating it
+         */
+        post: operations["column_connect"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layers/by-id/{layer-id}/select": {
-    /**
-     * Select the layer by id 
-     * @description Select the layer with the given id
-     */
-    post: operations["layer_select_by_id"];
-    parameters: {
-        /** @description The unique layer id to update */
-      path: {
-        "layer-id": number;
-      };
+    "/composition/columns/by-id/{column-id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique column id */
+                "column-id": number;
+            };
+            cookie?: never;
+        };
+        /**
+         * Retrieve column properties by id
+         * @description Returns a single column
+         */
+        get: operations["get_column_by_id"];
+        /**
+         * Update specific column by id
+         * @description Update a single column
+         */
+        put: operations["replace_column_by_id"];
+        post?: never;
+        /**
+         * Remove specific layer by id
+         * @description Remove the column with the given id
+         */
+        delete: operations["remove_column_by_id"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layers/by-id/{layer-id}/clear": {
-    /**
-     * Disconnects any playing clips in the layer by id 
-     * @description Disconnects any playing clips in the layer by id
-     */
-    post: operations["layer_clear_by_id"];
-    parameters: {
-        /** @description The unique layer id to clear */
-      path: {
-        "layer-id": number;
-      };
+    "/composition/columns/by-id/{column-id}/duplicate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique column id to use */
+                "column-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Duplicate the given column
+         * @description Take the given column and make a copy of it. All properties will be the same, except for the unique identifiers. The new column is inserted into the composition next to the existing one.
+         */
+        post: operations["composition_duplicate_column_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layers/by-id/{layer-id}/clearclips": {
-    /**
-     * Clears all clips in the layer by id 
-     * @description Clears all clips in the layer by id, removing all tracks and settings from the clips
-     */
-    post: operations["layer_clear_clips_by_id"];
-    parameters: {
-        /** @description The unique layer id to clear clips from */
-      path: {
-        "layer-id": number;
-      };
+    "/composition/columns/by-id/{column-id}/{parameter}/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique id of the column to reset parameter on */
+                "column-id": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reset a parameter in a column to its default value.
+         * @description This resets a parameter on the indexed column to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
+         */
+        post: operations["reset_column_param_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layergroups/{layergroup-index}": {
-    /**
-     * Retrieve layer group properties and layer info by index 
-     * @description Returns a single layer group and all of its layers
-     */
-    get: operations["get_layergroup"];
-    /**
-     * Update specified layer group and/or layers by index 
-     * @description Updates a single layer group and all of its layers
-     */
-    put: operations["replace_layergroup"];
-    parameters: {
-        /** @description Layer group index to use (1-based) */
-      path: {
-        "layergroup-index": number;
-      };
+    "/composition/columns/by-id/{column-id}/connect": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique identifier for the column to connect */
+                "column-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Connect the column by id
+         * @description Connect the column, possibly activating it. This works for both regular columns as well as columns inside a layer group
+         */
+        post: operations["column_connect_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layergroups/selected": {
-    /**
-     * Retrieve selected layer group properties and layer info 
-     * @description Returns a single layer group and all of its layers
-     */
-    get: operations["list_selected_layergroup"];
-    /**
-     * Update selected layer group and/or layers 
-     * @description Updates a single layer group and all of its layers
-     */
-    put: operations["replace_selected_layergroup"];
-  };
-  "/composition/layergroups/{layergroup-index}/{parameter}/reset": {
-    /**
-     * Reset a parameter in a layer group to its default value. 
-     * @description This resets a parameter on the indexed layer group to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    post: operations["reset_layer_group_param"];
-    parameters: {
-        /** @description Layer group index to reset param on (1-based) */
-        /** @description Name of the parameter to reset */
-      path: {
-        "layergroup-index": number;
-        parameter: string;
-      };
+    "/composition/layers/{layer-index}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+            };
+            cookie?: never;
+        };
+        /**
+         * Retrieve layer properties and clip info by index
+         * @description Returns a single layer and all of its clips
+         */
+        get: operations["get_layer"];
+        /**
+         * Update specified layer and/or clips by index
+         * @description Updates a single layer and all of its clips
+         */
+        put: operations["replace_layer"];
+        post?: never;
+        /**
+         * Remove a layer by index
+         * @description Remove the layer with the given index
+         */
+        delete: operations["delete_layer"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layergroups/selected/{parameter}/reset": {
-    /**
-     * Reset a parameter in the selected layer group to its default value. 
-     * @description This resets a parameter on the selected layer group to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    post: operations["reset_selected_layer_group_param"];
-    parameters: {
-        /** @description Name of the parameter to reset */
-      path: {
-        parameter: string;
-      };
+    "/composition/layers/{layer-index}/duplicate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Duplicate the given layer
+         * @description Take the given layer and make a copy of it. All properties will be the same, except for the unique identifiers. The new layer is inserted into the composition below the existing one.
+         */
+        post: operations["composition_duplicate_layer"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layergroupss/{layergroup-index}/select": {
-    /**
-     * Select the layer group by index 
-     * @description Select the layer group at the given index
-     */
-    post: operations["layergroup_select"];
-    parameters: {
-        /** @description Layer group index to select (1-based) */
-      path: {
-        "layergroup-index": number;
-      };
+    "/composition/layers/{layer-index}/effects/video/move": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Move an effect to the end of the layer
+         * @description Take an existing effect instance, and move it to the end of the layer
+         */
+        post: operations["move_effect_layer"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layergroups/by-id/{layergroup-id}": {
-    /**
-     * Retrieve layer group properties and layer info by id 
-     * @description Returns a single layer group and all of its layers
-     */
-    get: operations["get_layergroup_by_id"];
-    /**
-     * Update specified layer and/or clips by id 
-     * @description Updates a single layer group and all of its layers
-     */
-    put: operations["replace_layergroup_by_id"];
-    parameters: {
-        /** @description The unique layer group id to use */
-      path: {
-        "layergroup-id": number;
-      };
+    "/composition/layers/{layer-index}/effects/video/move/{offset}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+                /** @description The offset at which to insert the effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Move an effect to the end of the composition
+         * @description Take an existing effect instance, and move it to the given offset
+         */
+        post: operations["move_effect_layer_offset"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layergroups/by-id/{layergroup-id}/{parameter}/reset": {
-    /**
-     * Reset a parameter in a layer group to its default value. 
-     * @description This resets a parameter on the indexed layer group to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    post: operations["reset_layer_group_param_by_id"];
-    parameters: {
-        /** @description The unique layer group id to reset param on (1-based) */
-        /** @description Name of the parameter to reset */
-      path: {
-        "layergroup-id": number;
-        parameter: string;
-      };
+    "/composition/layers/{layer-index}/effects/video/add": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to a layer by index
+         * @description Add an effect to the layer at the specified index
+         */
+        post: operations["add_layer_effect"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layergroups/by-id/{layergroup-id}/select": {
-    /**
-     * Select the layer group by id 
-     * @description Select the layer group with the given id
-     */
-    post: operations["layergroup_select_by_id"];
-    parameters: {
-        /** @description The unique layer group id to select */
-      path: {
-        "layergroup-id": number;
-      };
+    "/composition/layers/{layer-index}/effects/video/add/{offset}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to a layer by index, at the given offset
+         * @description Add an effect to the layer at the specified index
+         */
+        post: operations["layer_add_effect_offset"];
+        /**
+         * Remove an effect from a layer
+         * @description Remove an effect from a layer
+         */
+        delete: operations["delete_layer_effect"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/decks/{deck-index}": {
-    /**
-     * Retrieve deck properties by index 
-     * @description Returns a single deck
-     */
-    get: operations["get_deck"];
-    /**
-     * Update specific deck by index 
-     * @description Update a single deck
-     */
-    put: operations["replace_deck"];
-    parameters: {
-        /** @description Deck index to use (1-based) */
-      path: {
-        "deck-index": number;
-      };
+    "/composition/layers/selected": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve layer properties and clip info for the selected layers
+         * @description Returns a single layer and all of its clips
+         */
+        get: operations["list_selected_layer"];
+        /**
+         * Update selected layer and/or clips
+         * @description Updates a single layer and all of its clips
+         */
+        put: operations["replace_selected_layer"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/decks/{deck-index}/{parameter}/reset": {
-    /**
-     * Reset a parameter in a deck to its default value. 
-     * @description This resets a parameter on the indexed deck to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    post: operations["reset_deck_param"];
-    parameters: {
-        /** @description Deck index to reset param on (1-based) */
-        /** @description Name of the parameter to reset */
-      path: {
-        "deck-index": number;
-        parameter: string;
-      };
+    "/composition/layers/selected/duplicate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Duplicate the selected layer
+         * @description Take the selected layer and make a copy of it. All properties will be the same, except for the unique identifiers. The new layer is inserted into the composition below the existing one.
+         */
+        post: operations["composition_duplicate_selected_layer"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/decks/{deck-index}/select": {
-    /**
-     * Select the deck by index 
-     * @description Select the deck at the given index
-     */
-    post: operations["deck_select"];
-    parameters: {
-        /** @description Deck index to select (1-based) */
-      path: {
-        "deck-index": number;
-      };
+    "/composition/layers/selected/effects/video/add": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to the selected layer
+         * @description Add an effect to the currently selected layer
+         */
+        post: operations["add_effect_selected_layer"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/decks/by-id/{deck-id}": {
-    /**
-     * Retrieve deck properties by id 
-     * @description Returns a single deck
-     */
-    get: operations["get_deck_by_id"];
-    /**
-     * Update specific deck by id 
-     * @description Update a single deck
-     */
-    put: operations["replace_deck_by_id"];
-    parameters: {
-        /** @description The unique deck id */
-      path: {
-        "deck-id": number;
-      };
+    "/composition/layers/selected/effects/video/add/{offset}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect at the given offset to the selected layer
+         * @description Add an effect at the given offset to the currently selected layer
+         */
+        post: operations["selected_layer_add_effect_offset"];
+        /**
+         * Remove an effect from a layer
+         * @description Remove an effect from a layer
+         */
+        delete: operations["delete_selected_layer_effect"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/decks/by-id/{deck-id}/{parameter}/reset": {
-    /**
-     * Reset a parameter in a deck to its default value. 
-     * @description This resets a parameter on the indexed deck to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    post: operations["reset_deck_param_by_id"];
-    parameters: {
-        /** @description The unique deck id to reset param on (1-based) */
-        /** @description Name of the parameter to reset */
-      path: {
-        "deck-id": number;
-        parameter: string;
-      };
+    "/composition/layers/{layer-index}/{parameter}/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to reset param on (1-based) */
+                "layer-index": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reset a parameter in a layer to its default value.
+         * @description This resets a parameter on the indexed layer to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
+         */
+        post: operations["reset_layer_param"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/decks/by-id/{deck-id}/select": {
-    /**
-     * Select the deck by id 
-     * @description Select the deck with the given id
-     */
-    post: operations["deck_select_by_id"];
-    parameters: {
-        /** @description The unique deck id to select */
-      path: {
-        "deck-id": number;
-      };
+    "/composition/layers/add": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add a new layer to the composition
+         * @description This adds a new layer either at the end, or somewhere else in the composition
+         */
+        post: operations["composition_add_layer"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layers/{layer-index}/clips/{clip-index}": {
-    /**
-     * Retrieve a clip by its position in the clip grid 
-     * @description Retrieve all clip information and associated effects
-     */
-    get: operations["get_clip_by_position"];
-    /**
-     * Update clip and/or its effects by position in the clip grid 
-     * @description Update a single clip and its effects
-     */
-    put: operations["replace_clip_by_position"];
-    parameters: {
-        /** @description Layer index to retrieve (1-based) */
-        /** @description Clip index to retrieve (1-based) */
-      path: {
-        "layer-index": number;
-        "clip-index": number;
-      };
+    "/composition/layers/selected/{parameter}/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reset a parameter in the selected layer to its default value.
+         * @description This resets a parameter on the selected layer to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
+         */
+        post: operations["reset_selected_layer_param"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/clips/selected": {
-    /**
-     * Retrieve the selected clip 
-     * @description Retrieve all clip information and associated effects
-     */
-    get: operations["list_selected_clip"];
-    /**
-     * Update selected clip and/or its effects 
-     * @description Update a single clip and its effects
-     */
-    put: operations["replace_selected_clip"];
-  };
-  "/composition/layers/{layer-index}/clips/{clip-index}/{parameter}/reset": {
-    /**
-     * Reset a parameter in a clip to its default value. 
-     * @description This resets a parameter on the indexed clip to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    post: operations["reset_clip_param"];
-    parameters: {
-        /** @description Layer index to retrieve (1-based) */
-        /** @description Clip index to retrieve (1-based) */
-        /** @description Name of the parameter to reset */
-      path: {
-        "layer-index": number;
-        "clip-index": number;
-        parameter: string;
-      };
+    "/composition/layers/{layer-index}/select": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to select (1-based) */
+                "layer-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Select the layer by index
+         * @description Select the layer at the given index
+         */
+        post: operations["layer_select"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/clips/selected/{parameter}/reset": {
-    /**
-     * Reset a parameter in the selected clip to its default value. 
-     * @description This resets a parameter on the selected clip to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    post: operations["reset_selected_clip_param"];
-    parameters: {
-        /** @description Name of the parameter to reset */
-      path: {
-        parameter: string;
-      };
+    "/composition/layers/{layer-index}/clear": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to clear (1-based) */
+                "layer-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Disconnects any playing clips in the layer by index
+         * @description Disconnects any playing clips in the layer by index
+         */
+        post: operations["layer_clear"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layers/{layer-index}/clips/{clip-index}/select": {
-    /**
-     * Select the clip by its position in the clip grid 
-     * @description Select the clip
-     */
-    post: operations["clip_select"];
-    parameters: {
-        /** @description Layer index to retrieve (1-based) */
-        /** @description Clip index to retrieve (1-based) */
-      path: {
-        "layer-index": number;
-        "clip-index": number;
-      };
+    "/composition/layers/selected/clear": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Disconnects any playing clips in the selected layer
+         * @description Disconnects any playing clips in the selected layer
+         */
+        post: operations["selected_layer_clear"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layers/{layer-index}/clips/{clip-index}/connect": {
-    /**
-     * Connect the clip by its position in the clip grid 
-     * @description Connect the clip, possibly activating it
-     */
-    post: operations["clip_connect"];
-    parameters: {
-        /** @description Layer index to retrieve (1-based) */
-        /** @description Clip index to retrieve (1-based) */
-      path: {
-        "layer-index": number;
-        "clip-index": number;
-      };
+    "/composition/layers/{layer-index}/clearclips": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to clear clips from (1-based) */
+                "layer-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Clears all clips in the layer by index
+         * @description Clears all clips in the layer by index, removing all tracks and settings from the clips
+         */
+        post: operations["layer_clear_clips"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/clips/selected/connect": {
-    /**
-     * Connect the selected clip 
-     * @description Connect the clip, possibly activating it
-     */
-    post: operations["selected_clip_connect"];
-  };
-  "/composition/layers/{layer-index}/clips/{clip-index}/open": {
-    /**
-     * Loads a file or opens a source into a clip by its position in the clip grid 
-     * @description Loads a file or opens a source into a clip, will retain settings as much as possible
-     */
-    post: operations["clip_open"];
-    parameters: {
-        /** @description Layer index to retrieve (1-based) */
-        /** @description Clip index to retrieve (1-based) */
-      path: {
-        "layer-index": number;
-        "clip-index": number;
-      };
+    "/composition/layers/selected/clearclips": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Clears all clips in the selected layer
+         * @description Clears all clips in the selected layer, removing all tracks and settings from the clips
+         */
+        post: operations["selected_layer_clear_clips"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layers/{layer-index}/clips/{clip-index}/openfile": {
-    /**
-     * Loads file into clip by its position in the clip grid 
-     * @deprecated 
-     * @description Loads file into clip, will retain settings as much as possible
-     */
-    post: operations["clip_openfile"];
-    parameters: {
-        /** @description Layer index to retrieve (1-based) */
-        /** @description Clip index to retrieve (1-based) */
-      path: {
-        "layer-index": number;
-        "clip-index": number;
-      };
+    "/composition/layers/by-id/{layer-id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to use */
+                "layer-id": number;
+            };
+            cookie?: never;
+        };
+        /**
+         * Retrieve layer properties and clip info by id
+         * @description Returns a single layer and all of its clips
+         */
+        get: operations["get_layer_by_id"];
+        /**
+         * Update specified layer and/or clips by id
+         * @description Updates a single layer and all of its clips
+         */
+        put: operations["replace_layer_by_id"];
+        post?: never;
+        /**
+         * Remove specified layer by id
+         * @description Remove the layer with the given id
+         */
+        delete: operations["delete_layer_by_id"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/clips/selected/open": {
-    /**
-     * Loads a file or opens a source into the selected clip 
-     * @description Loads a file or opens a source into a clip, will retain settings as much as possible
-     */
-    post: operations["selected_clip_open"];
-  };
-  "/composition/clips/selected/openfile": {
-    /**
-     * Loads file into the selected clip 
-     * @deprecated 
-     * @description Loads file into clip, will retain settings as much as possible
-     */
-    post: operations["selected_clip_openfile"];
-  };
-  "/composition/layers/{layer-index}/clips/{clip-index}/clear": {
-    /**
-     * Clears the clip by its position in the clip grid 
-     * @description Clears the clip, removing all tracks and settings
-     */
-    post: operations["clip_clear"];
-    parameters: {
-        /** @description Layer index to retrieve (1-based) */
-        /** @description Clip index to retrieve (1-based) */
-      path: {
-        "layer-index": number;
-        "clip-index": number;
-      };
+    "/composition/layers/by-id/{layer-id}/duplicate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to use */
+                "layer-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Duplicate the given layer
+         * @description Take the given layer and make a copy of it. All properties will be the same, except for the unique identifiers. The new layer is inserted into the composition below the existing one.
+         */
+        post: operations["composition_duplicate_layer_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/clips/selected/clear": {
-    /**
-     * Clears the selected clip 
-     * @description Clears the clip, removing all tracks and settings
-     */
-    post: operations["selected_clip_clear"];
-  };
-  "/composition/clips/by-id/{clip-id}": {
-    /**
-     * Retrieve a clip by id 
-     * @description Retrieve all clip information and associated effects
-     */
-    get: operations["get_clip_by_id"];
-    /**
-     * Update clip and/or its effects by id 
-     * @description Update a single clip and its effects
-     */
-    put: operations["replace_clip_by_id"];
-    parameters: {
-        /** @description The unique identifier for the clip to use */
-      path: {
-        "clip-id": number;
-      };
+    "/composition/layers/by-id/{layer-id}/effects/video/move": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to use */
+                "layer-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Move an effect to the end of a layer
+         * @description Take an existing effect instance, and move it to the end of the layer
+         */
+        post: operations["move_effect_layer_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/clips/{clip-id}/{parameter}/reset": {
-    /**
-     * Reset a parameter in a clip to its default value. 
-     * @description This resets a parameter on the indexed clip to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    post: operations["reset_clip_param_by_id"];
-    parameters: {
-        /** @description The unique identifier for the clip to reset parameter in */
-        /** @description Name of the parameter to reset */
-      path: {
-        "clip-id": number;
-        parameter: string;
-      };
+    "/composition/layers/by-id/{layer-id}/effects/video/move/{offset}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to use */
+                "layer-id": number;
+                /** @description The offset at which to insert the effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Move an effect to a specific offset inside the layer
+         * @description Take an existing effect instance, and move it to the given offset
+         */
+        post: operations["move_effect_layer_offset_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/clips/by-id/{clip-id}/select": {
-    /**
-     * Select the clip by id 
-     * @description Select the clip
-     */
-    post: operations["clip_select_by_id"];
-    parameters: {
-        /** @description Unique id of the clip to select */
-      path: {
-        "clip-id": number;
-      };
+    "/composition/layers/by-id/{layer-id}/effects/video/add": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to use */
+                "layer-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to a layer by unique id
+         * @description Add an effect to the layer with the given unique id
+         */
+        post: operations["add_effect_layer_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/clips/by-id/{clip-id}/connect": {
-    /**
-     * Connect the clip by id 
-     * @description Connect the clip, possibly activating it
-     */
-    post: operations["clip_connect_by_id"];
-    parameters: {
-        /** @description The unique clip idenfier */
-      path: {
-        "clip-id": number;
-      };
+    "/composition/layers/by-id/{layer-id}/effects/video/add/{offset}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to use */
+                "layer-id": number;
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to the layer with the given id, at the given offset
+         * @description Add an effect to the layer with the given unique id
+         */
+        post: operations["layer_add_effect_by_id_offset"];
+        /**
+         * Remove an effect from a layer
+         * @description Remove an effect from a layer
+         */
+        delete: operations["delete_layer_effect_by_id"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/clips/by-id/{clip-id}/open": {
-    /**
-     * Loads a file or opens a source into the selected clip 
-     * @description Loads a file or opens a source into a clip, will retain settings as much as possible
-     */
-    post: operations["clip_open_by_id"];
-    parameters: {
-        /** @description The unique clip idenfier */
-      path: {
-        "clip-id": number;
-      };
+    "/composition/layers/by-id/{layer-id}/{parameter}/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to reset param on (1-based) */
+                "layer-id": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reset a parameter in a layer to its default value.
+         * @description This resets a parameter on the indexed layer to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
+         */
+        post: operations["reset_layer_param_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/clips/by-id/{clip-id}/openfile": {
-    /**
-     * Loads file into clip with the given unique identifier 
-     * @deprecated 
-     * @description Loads file into clip, will retain settings as much as possible
-     */
-    post: operations["clip_openfile_by_id"];
-    parameters: {
-        /** @description The unique clip idenfier */
-      path: {
-        "clip-id": number;
-      };
+    "/composition/layers/by-id/{layer-id}/select": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to update */
+                "layer-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Select the layer by id
+         * @description Select the layer with the given id
+         */
+        post: operations["layer_select_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/clips/by-id/{clip-id}/clear": {
-    /**
-     * Clears the clip with the given unique id 
-     * @description Clears the clip, removing all tracks and settings
-     */
-    post: operations["clip_clear_by_id"];
-    parameters: {
-        /** @description The unique clip idenfier */
-      path: {
-        "clip-id": number;
-      };
+    "/composition/layers/by-id/{layer-id}/clear": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to clear */
+                "layer-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Disconnects any playing clips in the layer by id
+         * @description Disconnects any playing clips in the layer by id
+         */
+        post: operations["layer_clear_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/layers/{layer-index}/clips/{clip-index}/thumbnail": {
-    /**
-     * Retrieve the latest thumbnail belonging to the specified clip 
-     * @description Finds the clip at the given position in the grid and retrieves the latest thumbnail
-     */
-    get: operations["list_clip_thumbnail_by_position"];
-    parameters: {
-        /** @description Layer index to retrieve (1-based) */
-        /** @description Clip index to retrieve (1-based) */
-      path: {
-        "layer-index": number;
-        "clip-index": number;
-      };
+    "/composition/layers/by-id/{layer-id}/clearclips": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to clear clips from */
+                "layer-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Clears all clips in the layer by id
+         * @description Clears all clips in the layer by id, removing all tracks and settings from the clips
+         */
+        post: operations["layer_clear_clips_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/clips/selected/thumbnail": {
-    /**
-     * Retrieve the latest thumbnail belonging to the selected clip 
-     * @description Finds the selected clip and retrieves the latest thumbnail
-     */
-    get: operations["list_selected_clip_thumbnail"];
-  };
-  "/composition/layers/{layer-index}/clips/{clip-index}/thumbnail/{last-updated}": {
-    /**
-     * Retrieve the latest thumbnail belonging to the specified clip 
-     * @description Finds the clip at the given position in the grid and retrieves the thumbnail if the thumbnail was last updated at the given timestamp
-     */
-    get: operations["get_clip_thumbnail_by_position_and_timestamp"];
-    parameters: {
-        /** @description Layer index to retrieve (1-based) */
-        /** @description Clip index to retrieve (1-based) */
-        /** @description Last updated timestamp for the clip thumbnail. If given, must match the timestamp of the current thumbnail. */
-      path: {
-        "layer-index": number;
-        "clip-index": number;
-        "last-updated": number;
-      };
+    "/composition/layergroups/{layergroup-index}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+            };
+            cookie?: never;
+        };
+        /**
+         * Retrieve layer group properties and layer info by index
+         * @description Returns a single layer group and all of its layers
+         */
+        get: operations["get_layergroup"];
+        /**
+         * Update specified layer group and/or layers by index
+         * @description Updates a single layer group and all of its layers
+         */
+        put: operations["replace_layergroup"];
+        post?: never;
+        /**
+         * Remove a layer group by index
+         * @description Remove the layer group with the given index
+         */
+        delete: operations["delete_layer_group"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/clips/selected/thumbnail/{last-updated}": {
-    /**
-     * Retrieve the latest thumbnail belonging to the selected clip 
-     * @description Finds the selected clip and retrieves the thumbnail if the thumbnail was last updated at the given timestamp
-     */
-    get: operations["get_last_clip_thumbnail_by_timestamp"];
-    parameters: {
-        /** @description Last updated timestamp for the clip thumbnail. If given, must match the timestamp of the current thumbnail. */
-      path: {
-        "last-updated": number;
-      };
+    "/composition/layergroups/{layergroup-index}/duplicate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Duplicate the given layer group
+         * @description Take the given layer group and make a copy of it. All properties will be the same, except for the unique identifiers. The new layer group is inserted into the composition below the existing one.
+         */
+        post: operations["composition_duplicate_layer_group"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/clips/by-id/{clip-id}/thumbnail": {
-    /**
-     * Retrieve the latest thumbnail belonging to the specified clip 
-     * @description Finds the clip with the given unique id and retrieves the latest thumbnail
-     */
-    get: operations["list_clip_thumbnail_by_id"];
-    parameters: {
-        /** @description The unique clip id to get the thumbnail for */
-      path: {
-        "clip-id": number;
-      };
+    "/composition/layergroups/{layergroup-index}/move-layer": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an existing layer to an existing layer group
+         * @description Given an existing layer, identified by the path in the body, move it into the layer group at the given position in the composition.
+         */
+        post: operations["composition_move_layer_to_group"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/clips/by-id/{clip-id}/thumbnail/{last-updated}": {
-    /**
-     * Retrieve the latest thumbnail belonging to the specified clip 
-     * @description Finds the clip with the given unique id and retrieves the thumbnail if the thumbnail was last updated at the given timestamp
-     */
-    get: operations["get_clip_thumbnail_by_id_and_timestamp"];
-    parameters: {
-        /** @description The unique clip id to get the thumbnail for */
-        /** @description Last updated timestamp for the clip thumbnail. If given, must match the timestamp of the current thumbnail. */
-      path: {
-        "clip-id": number;
-        "last-updated": number;
-      };
+    "/composition/layergroups/{layergroup-index}/add-layer": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add a new layer to an existing layer group
+         * @description Create a new layer inside a layer group. If the path to an existing layer is given, the new layer is inserted before.
+         */
+        post: operations["composition_add_layer_to_group"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-  "/composition/thumbnail/dummy": {
-    /**
-     * Explicitly retrieve the dummy thumbnails used for clips without a thumbnail 
-     * @description This retrieves the dummy thumbnail that is also used for clips that do not yet have a thumbnail. This is a convenient endpoint for clips when you already know they will not have a clip attached. Clips without thumbnail will have their `last_update` property set to "0". This call always returns the exact same result and it may be cached indefinitely.
-     */
-    get: operations["list_dummy_thumbnail"];
-  };
-  "/composition/effects/by-id/{effect-id}": {
-    /**
-     * Retrieve effect properties given their unique identifier 
-     * @description Finds the effect in any clip belonging to the composition
-     */
-    get: operations["get_effect_by_id"];
-    /**
-     * Update effect by id 
-     * @description Update a single effect
-     */
-    put: operations["replace_effect_by_id"];
-    parameters: {
-        /** @description The unique effect id to get the thumbnail for */
-      path: {
-        "effect-id": number;
-      };
+    "/composition/layergroups/add": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add a new layer group to the composition
+         * @description This adds a new layer group either at the end, or somewhere else in the composition
+         */
+        post: operations["composition_add_layergroup"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-  };
-}
-
+    "/composition/layergroups/{layergroup-index}/effects/video/move": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Move an effect to the end of the layer group
+         * @description Take an existing effect instance, and move it to the end of the layer group
+         */
+        post: operations["move_effect_layer_group"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/{layergroup-index}/effects/video/move/{offset}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+                /** @description The offset at which to insert the effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Move an effect to the given offset in the layer group
+         * @description Take an existing effect instance, and move it to the given offset
+         */
+        post: operations["move_effect_layer_group_offset"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/{layergroup-index}/effects/video/add": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to a layer group by index
+         * @description Add an effect to the layer group at the specified index
+         */
+        post: operations["add_effect_layergroup"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/{layergroup-index}/effects/video/add/{offset}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to a layer group by index
+         * @description Add an effect to the layer group at the specified index
+         */
+        post: operations["layergroup_add_effect_offset"];
+        /**
+         * Remove an effect from a layer group
+         * @description Remove an effect from a layer group
+         */
+        delete: operations["delete_layer_group_effect"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/{layergroup-index}/columns/{column-index}/connect": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+                /** @description Column index to connect (1-based) */
+                "column-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Connect the column in the layergroup by index
+         * @description Connect the column, possibly activating it
+         */
+        post: operations["layer_group_column_connect"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/selected": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve selected layer group properties and layer info
+         * @description Returns a single layer group and all of its layers
+         */
+        get: operations["list_selected_layergroup"];
+        /**
+         * Update selected layer group and/or layers
+         * @description Updates a single layer group and all of its layers
+         */
+        put: operations["replace_selected_layergroup"];
+        post?: never;
+        /**
+         * Remove the selected layer group
+         * @description If a layer group is selected, it will be removed
+         */
+        delete: operations["delete_selected_layer_group"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/selected/duplicate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Duplicate the selected layer group
+         * @description Take the selected layer group and make a copy of it. All properties will be the same, except for the unique identifiers. The new layer group is inserted into the composition below the existing one.
+         */
+        post: operations["composition_duplicate_selected_layer_group"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/selected/move-layer": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an existing layer to the selected layer group
+         * @description Given an existing layer, identified by the path in the body, move it into the currently selected layer group.
+         */
+        post: operations["composition_move_layer_to_selected_group"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/selected/add-layer": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add new layer to the selected layer group
+         * @description Create a new layer inside a layer group. If the path to an existing layer is given, the new layer is inserted before.
+         */
+        post: operations["composition_add_layer_to_selected_group"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/selected/effects/video/add": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to the selected layer group
+         * @description Add an effect to the selected layer group
+         */
+        post: operations["add_effect_selected_layergroup"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/selected/effects/video/add/{offset}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to the selected layer group
+         * @description Add an effect to the selected layer group
+         */
+        post: operations["selected_layergroup_add_effect_offset"];
+        /**
+         * Remove an effect from a layer group
+         * @description Remove an effect from a layer group
+         */
+        delete: operations["delete_selected_layer_group_effect"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/{layergroup-index}/{parameter}/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to reset param on (1-based) */
+                "layergroup-index": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reset a parameter in a layer group to its default value.
+         * @description This resets a parameter on the indexed layer group to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
+         */
+        post: operations["reset_layer_group_param"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/selected/{parameter}/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reset a parameter in the selected layer group to its default value.
+         * @description This resets a parameter on the selected layer group to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
+         */
+        post: operations["reset_selected_layer_group_param"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroupss/{layergroup-index}/select": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to select (1-based) */
+                "layergroup-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Select the layer group by index
+         * @description Select the layer group at the given index
+         */
+        post: operations["layergroup_select"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/{layergroup-index}/columns/{column-index}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+                /** @description Column index to use (1-based) */
+                "column-index": number;
+            };
+            cookie?: never;
+        };
+        /**
+         * Retrieve the column inside the layer group
+         * @description Returns a single column from the requested layer group
+         */
+        get: operations["get_layergroup_column"];
+        put?: never;
+        /**
+         * Update layer group column
+         * @description Update the column inside the specified layer group by its position inside the composition
+         */
+        post: operations["replace_layergroup_column"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/by-id/{layergroup-id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer group id to use */
+                "layergroup-id": number;
+            };
+            cookie?: never;
+        };
+        /**
+         * Retrieve layer group properties and layer info by id
+         * @description Returns a single layer group and all of its layers
+         */
+        get: operations["get_layergroup_by_id"];
+        /**
+         * Update specified layer and/or clips by id
+         * @description Updates a single layer group and all of its layers
+         */
+        put: operations["replace_layergroup_by_id"];
+        post?: never;
+        /**
+         * Remove specified layer group by id
+         * @description Remove the layer group with the given id
+         */
+        delete: operations["delete_layergroup_by_id"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/by-id/{layergroup-id}/duplicate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer group id to use */
+                "layergroup-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Duplicate the given layer group
+         * @description Take the given layer group and make a copy of it. All properties will be the same, except for the unique identifiers. The new layer group is inserted into the composition below the existing one.
+         */
+        post: operations["composition_duplicate_layer_group_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/by-id/{layergroup-id}/move-layer": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer group id to use */
+                "layergroup-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an existing layer to an existing layer group
+         * @description Given an existing layer, identified by the path in the body, move it into the layer group at the given position in the composition.
+         */
+        post: operations["composition_move_layer_to_group_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/by-id/{layergroup-id}/add-layer": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer group id to use */
+                "layergroup-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add new layer to an existing layer group
+         * @description Create a new layer inside a layer group. If the path to an existing layer is given, the new layer is inserted before.
+         */
+        post: operations["composition_add_layer_to_group_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/by-id/{layergroup-id}/effects/video/move": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer group id to use */
+                "layergroup-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Move an effect to the end of the layer group
+         * @description Take an existing effect instance, and move it to the end of the layer group
+         */
+        post: operations["move_effect_layer_group_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/by-id/{layergroup-id}/effects/video/move/{offset}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer group id to use */
+                "layergroup-id": number;
+                /** @description The offset at which to insert the effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Move an effect to the given offset in the layer group
+         * @description Take an existing effect instance, and move it to the given offset
+         */
+        post: operations["move_effect_layer_group_offset_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/by-id/{layergroup-id}/effects/video/add": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique id for the layer group */
+                "layergroup-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to a layer group by unique id
+         * @description Add an effect to the layer group with the given unique id
+         */
+        post: operations["add_effect_layergroup_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/by-id/{layergroup-id}/effects/video/add/{offset}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique id for the layer group */
+                "layergroup-id": number;
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to a layer group by unique id
+         * @description Add an effect to the layer group with the given unique id
+         */
+        post: operations["layergroup_add_effect_by_id_offset"];
+        /**
+         * Remove an effect from a layer group
+         * @description Remove an effect from a layer group
+         */
+        delete: operations["delete_layer_group_effect_by_id"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/by-id/{layergroup-id}/{parameter}/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer group id to reset param on (1-based) */
+                "layergroup-id": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reset a parameter in a layer group to its default value.
+         * @description This resets a parameter on the indexed layer group to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
+         */
+        post: operations["reset_layer_group_param_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layergroups/by-id/{layergroup-id}/select": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer group id to select */
+                "layergroup-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Select the layer group by id
+         * @description Select the layer group with the given id
+         */
+        post: operations["layergroup_select_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/decks/{deck-index}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Deck index to use (1-based) */
+                "deck-index": number;
+            };
+            cookie?: never;
+        };
+        /**
+         * Retrieve deck properties by index
+         * @description Returns a single deck
+         */
+        get: operations["get_deck"];
+        /**
+         * Update specific deck by index
+         * @description Update a single deck
+         */
+        put: operations["replace_deck"];
+        post?: never;
+        /**
+         * Remove a deck by index
+         * @description Remove the deck with the given index
+         */
+        delete: operations["delete_deck"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/decks/{deck-index}/duplicate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Deck index to use (1-based) */
+                "deck-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Duplicate the given deck
+         * @description Take the given deck and make a copy of it. All properties will be the same, except for the unique identifiers. The new deck is inserted into the composition next to the existing one.
+         */
+        post: operations["composition_duplicate_deck"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/decks/add": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add a new deck to the composition
+         * @description This adds a new deck either at the end, or somewhere else in the composition
+         */
+        post: operations["composition_add_deck"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/decks/{deck-index}/{parameter}/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Deck index to reset param on (1-based) */
+                "deck-index": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reset a parameter in a deck to its default value.
+         * @description This resets a parameter on the indexed deck to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
+         */
+        post: operations["reset_deck_param"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/decks/{deck-index}/select": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Deck index to select (1-based) */
+                "deck-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Select the deck by index
+         * @description Select the deck at the given index
+         */
+        post: operations["deck_select"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/decks/by-id/{deck-id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique deck id */
+                "deck-id": number;
+            };
+            cookie?: never;
+        };
+        /**
+         * Retrieve deck properties by id
+         * @description Returns a single deck
+         */
+        get: operations["get_deck_by_id"];
+        /**
+         * Update specific deck by id
+         * @description Update a single deck
+         */
+        put: operations["replace_deck_by_id"];
+        post?: never;
+        /**
+         * Remove specified deck by id
+         * @description Remove the deck with the given id
+         */
+        delete: operations["delete_deck_by_id"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/decks/by-id/{deck-id}/duplicate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique deck id to use */
+                "deck-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Duplicate the given deck
+         * @description Take the given deck and make a copy of it. All properties will be the same, except for the unique identifiers. The new deck is inserted into the composition next to the existing one.
+         */
+        post: operations["composition_duplicate_deck_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/decks/by-id/{deck-id}/{parameter}/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique deck id to reset param on (1-based) */
+                "deck-id": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reset a parameter in a deck to its default value.
+         * @description This resets a parameter on the indexed deck to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
+         */
+        post: operations["reset_deck_param_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/decks/by-id/{deck-id}/select": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique deck id to select */
+                "deck-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Select the deck by id
+         * @description Select the deck with the given id
+         */
+        post: operations["deck_select_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layers/{layer-index}/clips/{clip-index}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        /**
+         * Retrieve a clip by its position in the clip grid
+         * @description Retrieve all clip information and associated effects
+         */
+        get: operations["get_clip_by_position"];
+        /**
+         * Update clip and/or its effects by position in the clip grid
+         * @description Update a single clip and its effects
+         */
+        put: operations["replace_clip_by_position"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layers/{layer-index}/clips/{clip-index}/effects/video/move": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+                /** @description Clip index to use (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Move an effect to the end of the clip
+         * @description Take an existing effect instance, and move it to the end of the clip
+         */
+        post: operations["move_effect_clip"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layers/{layer-index}/clips/{clip-index}/effects/video/move/{offset}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+                /** @description Clip index to use (1-based) */
+                "clip-index": number;
+                /** @description The offset at which to insert the effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Move an effect to the given index in the clip
+         * @description Take an existing effect instance, and move it to the given offset
+         */
+        post: operations["move_effect_clip_offset"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layers/{layer-index}/clips/{clip-index}/effects/video/add": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to a clip by its position in the clip grid
+         * @description Add an effect to a clip at the specified position
+         */
+        post: operations["add_effect_clip"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layers/{layer-index}/clips/{clip-index}/effects/video/add/{offset}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to a clip by its position in the clip grid
+         * @description Add an effect to the clip at the specified position
+         */
+        post: operations["clip_add_effect_offset"];
+        /**
+         * Remove an effect from a clip
+         * @description Remove an effect from a clip
+         */
+        delete: operations["delete_clip_effect"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/selected": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve the selected clip
+         * @description Retrieve all clip information and associated effects
+         */
+        get: operations["list_selected_clip"];
+        /**
+         * Update selected clip and/or its effects
+         * @description Update a single clip and its effects
+         */
+        put: operations["replace_selected_clip"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/selected/effects/video/add": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to the selected clip
+         * @description Add an effect to the selected clip
+         */
+        post: operations["add_effect_selected_clip"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/selected/effects/video/add/{offset}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to the selected clip
+         * @description Add an effect to the selected clip
+         */
+        post: operations["selected_clip_add_effect_offset"];
+        /**
+         * Remove an effect from a clip
+         * @description Remove an effect from a clip
+         */
+        delete: operations["delete_selected_clip_effect"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layers/{layer-index}/clips/{clip-index}/{parameter}/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reset a parameter in a clip to its default value.
+         * @description This resets a parameter on the indexed clip to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
+         */
+        post: operations["reset_clip_param"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/selected/{parameter}/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reset a parameter in the selected clip to its default value.
+         * @description This resets a parameter on the selected clip to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
+         */
+        post: operations["reset_selected_clip_param"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layers/{layer-index}/clips/{clip-index}/select": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Select the clip by its position in the clip grid
+         * @description Select the clip
+         */
+        post: operations["clip_select"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layers/{layer-index}/clips/{clip-index}/connect": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Connect the clip by its position in the clip grid
+         * @description Connect the clip, possibly activating it
+         */
+        post: operations["clip_connect"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/selected/connect": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Connect the selected clip
+         * @description Connect the clip, possibly activating it
+         */
+        post: operations["selected_clip_connect"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layers/{layer-index}/clips/{clip-index}/open": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Loads a file or opens a source into a clip by its position in the clip grid
+         * @description Loads a file or opens a source into a clip, will retain settings as much as possible
+         */
+        post: operations["clip_open"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layers/{layer-index}/clips/{clip-index}/openfile": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Loads file into clip by its position in the clip grid
+         * @deprecated
+         * @description Loads file into clip, will retain settings as much as possible
+         */
+        post: operations["clip_openfile"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/selected/open": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Loads a file or opens a source into the selected clip
+         * @description Loads a file or opens a source into a clip, will retain settings as much as possible
+         */
+        post: operations["selected_clip_open"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/selected/openfile": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Loads file into the selected clip
+         * @deprecated
+         * @description Loads file into clip, will retain settings as much as possible
+         */
+        post: operations["selected_clip_openfile"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layers/{layer-index}/clips/{clip-index}/clear": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Clears the clip by its position in the clip grid
+         * @description Clears the clip, removing all tracks and settings
+         */
+        post: operations["clip_clear"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/selected/clear": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Clears the selected clip
+         * @description Clears the clip, removing all tracks and settings
+         */
+        post: operations["selected_clip_clear"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/by-id/{clip-id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique identifier for the clip to use */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        /**
+         * Retrieve a clip by id
+         * @description Retrieve all clip information and associated effects
+         */
+        get: operations["get_clip_by_id"];
+        /**
+         * Update clip and/or its effects by id
+         * @description Update a single clip and its effects
+         */
+        put: operations["replace_clip_by_id"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/by-id/{clip-id}/effects/video/move": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique clip id to use */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Move an effect to the end of the clip
+         * @description Take an existing effect instance, and move it to the end of the clip
+         */
+        post: operations["move_effect_clip_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/by-id/{clip-id}/effects/video/move/{offset}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique clip id to use */
+                "clip-id": number;
+                /** @description The offset at which to insert the effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Move an effect to the given offset in the clip
+         * @description Take an existing effect instance, and move it to the given offset
+         */
+        post: operations["move_effect_clip_offset_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/{clip-id}/effects/video/add": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique identifier for the clip to use */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to a clip by its unique identifier
+         * @description Add an effect to a clip by its unique id
+         */
+        post: operations["add_effect_clip_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/{clip-id}/effects/video/add/{offset}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique identifier for the clip to use */
+                "clip-id": number;
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add an effect to a clip by its unique identifier
+         * @description Add an effect to the clip with the unique identifier
+         */
+        post: operations["clip_add_effect_offset_by_id"];
+        /**
+         * Remove an effect from a clip
+         * @description Remove an effect from a clip
+         */
+        delete: operations["delete_clip_effect_by_id"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/{clip-id}/{parameter}/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique identifier for the clip to reset parameter in */
+                "clip-id": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reset a parameter in a clip to its default value.
+         * @description This resets a parameter on the indexed clip to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
+         */
+        post: operations["reset_clip_param_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/by-id/{clip-id}/select": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Unique id of the clip to select */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Select the clip by id
+         * @description Select the clip
+         */
+        post: operations["clip_select_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/by-id/{clip-id}/connect": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique clip idenfier */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Connect the clip by id
+         * @description Connect the clip, possibly activating it
+         */
+        post: operations["clip_connect_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/by-id/{clip-id}/open": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique clip idenfier */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Loads a file or opens a source into the selected clip
+         * @description Loads a file or opens a source into a clip, will retain settings as much as possible
+         */
+        post: operations["clip_open_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/by-id/{clip-id}/openfile": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique clip idenfier */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Loads file into clip with the given unique identifier
+         * @deprecated
+         * @description Loads file into clip, will retain settings as much as possible
+         */
+        post: operations["clip_openfile_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/by-id/{clip-id}/clear": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique clip idenfier */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Clears the clip with the given unique id
+         * @description Clears the clip, removing all tracks and settings
+         */
+        post: operations["clip_clear_by_id"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layers/{layer-index}/clips/{clip-index}/thumbnail": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        /**
+         * Retrieve the latest thumbnail belonging to the specified clip
+         * @description Finds the clip at the given position in the grid and retrieves the latest thumbnail
+         */
+        get: operations["list_clip_thumbnail_by_position"];
+        put?: never;
+        /**
+         * Set a custom thumbnail for the specified clip
+         * @description Finds the clip at the given position in the grid and sets the thumbnail
+         */
+        post: operations["set_clip_thumbnail_by_position"];
+        /**
+         * Revert thumbnail to default for the specified clip
+         * @description Undo any custom thumbnail selection and revert to the auto-generated thumbnail
+         */
+        delete: operations["revert_clip_thumbnail_by_position"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/selected/thumbnail": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve the latest thumbnail belonging to the selected clip
+         * @description Finds the selected clip and retrieves the latest thumbnail
+         */
+        get: operations["list_selected_clip_thumbnail"];
+        put?: never;
+        /**
+         * Set a custom thumbnail for the selected clip
+         * @description Finds the selected clip in the grid and sets the thumbnail
+         */
+        post: operations["set_selected_clip_thumbnail"];
+        /**
+         * Revert thumbnail to default for the selected clip
+         * @description Undo any custom thumbnail selection and revert to the auto-generated thumbnail
+         */
+        delete: operations["revert_selected_clip_thumbnail"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/layers/{layer-index}/clips/{clip-index}/thumbnail/{last-updated}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+                /** @description Last updated timestamp for the clip thumbnail. If given, must match the timestamp of the current thumbnail. */
+                "last-updated": number;
+            };
+            cookie?: never;
+        };
+        /**
+         * Retrieve the latest thumbnail belonging to the specified clip
+         * @description Finds the clip at the given position in the grid and retrieves the thumbnail if the thumbnail was last updated at the given timestamp
+         */
+        get: operations["get_clip_thumbnail_by_position_and_timestamp"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/selected/thumbnail/{last-updated}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Last updated timestamp for the clip thumbnail. If given, must match the timestamp of the current thumbnail. */
+                "last-updated": number;
+            };
+            cookie?: never;
+        };
+        /**
+         * Retrieve the latest thumbnail belonging to the selected clip
+         * @description Finds the selected clip and retrieves the thumbnail if the thumbnail was last updated at the given timestamp
+         */
+        get: operations["get_last_clip_thumbnail_by_timestamp"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/by-id/{clip-id}/thumbnail": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique clip id to get the thumbnail for */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        /**
+         * Retrieve the latest thumbnail belonging to the specified clip
+         * @description Finds the clip with the given unique id and retrieves the latest thumbnail
+         */
+        get: operations["list_clip_thumbnail_by_id"];
+        put?: never;
+        /**
+         * Set a custom thumbnail for the clip by id
+         * @description Finds the clip with the specified id in the grid and sets the thumbnail
+         */
+        post: operations["set_clip_thumbnail_by_id"];
+        /**
+         * Revert thumbnail to default for the clip by id
+         * @description Undo any custom thumbnail selection and revert to the auto-generated thumbnail
+         */
+        delete: operations["revert_clip_thumbnail_by_id"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/clips/by-id/{clip-id}/thumbnail/{last-updated}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique clip id to get the thumbnail for */
+                "clip-id": number;
+                /** @description Last updated timestamp for the clip thumbnail. If given, must match the timestamp of the current thumbnail. */
+                "last-updated": number;
+            };
+            cookie?: never;
+        };
+        /**
+         * Retrieve the latest thumbnail belonging to the specified clip
+         * @description Finds the clip with the given unique id and retrieves the thumbnail if the thumbnail was last updated at the given timestamp
+         */
+        get: operations["get_clip_thumbnail_by_id_and_timestamp"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/thumbnail/dummy": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Explicitly retrieve the dummy thumbnails used for clips without a thumbnail
+         * @description This retrieves the dummy thumbnail that is also used for clips that do not yet have a thumbnail. This is a convenient endpoint for clips when you already know they will not have a clip attached. Clips without thumbnail will have their `last_update` property set to "0". This call always returns the exact same result and it may be cached indefinitely.
+         */
+        get: operations["list_dummy_thumbnail"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/composition/effects/by-id/{effect-id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique effect id to get the thumbnail for */
+                "effect-id": number;
+            };
+            cookie?: never;
+        };
+        /**
+         * Retrieve effect properties given their unique identifier
+         * @description Finds the effect in any clip belonging to the composition
+         */
+        get: operations["get_effect_by_id"];
+        /**
+         * Update effect by id
+         * @description Update a single effect
+         */
+        put: operations["replace_effect_by_id"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+};
 export type webhooks = Record<string, never>;
-
-export interface components {
-  schemas: {
-    /** @description Generic information about the product serving the api */
-    ProductInfo: {
-      /**
-       * @description The product name. This is either 'Arena' or 'Avenue' 
-       * @example Arena
-       */
-      name?: string;
-      /**
-       * Format: int64 
-       * @description The major version number of the Arena or Avenue instance handling the request. 
-       * @example 7
-       */
-      major?: number;
-      /**
-       * Format: int64 
-       * @description The minor version number of the Arena or Avenue instance handling the request. 
-       * @example 8
-       */
-      minor?: number;
-      /**
-       * Format: int64 
-       * @description The micro version number of the Arena or Avenue instance handling the request. 
-       * @example 0
-       */
-      micro?: number;
-      /**
-       * Format: int64 
-       * @description The revision of the Arena or Avenue instance handling the request.
-       */
-      revision?: number;
+export type components = {
+    schemas: {
+        /** @description Generic information about the product serving the api */
+        ProductInfo: {
+            /**
+             * @description The product name. This is either 'Arena' or 'Avenue'
+             * @example Arena
+             */
+            name?: string;
+            /**
+             * Format: int64
+             * @description The major version number of the Arena or Avenue instance handling the request.
+             * @example 7
+             */
+            major?: number;
+            /**
+             * Format: int64
+             * @description The minor version number of the Arena or Avenue instance handling the request.
+             * @example 8
+             */
+            minor?: number;
+            /**
+             * Format: int64
+             * @description The micro version number of the Arena or Avenue instance handling the request.
+             * @example 0
+             */
+            micro?: number;
+            /**
+             * Format: int64
+             * @description The revision of the Arena or Avenue instance handling the request.
+             */
+            revision?: number;
+        };
+        /** @description An effect to be used on a clip. layer (group) or the composition */
+        Effect: {
+            /**
+             * @description The unique identifier for the effect
+             * @example A139
+             */
+            idstring?: string;
+            /**
+             * @description The descriptive name of the source
+             * @example Blow
+             */
+            name?: string;
+            /** @description All the presets for this source */
+            presets?: {
+                /**
+                 * Format: int64
+                 * @description The unique identifier for the preset
+                 * @example 2026888427
+                 */
+                id?: number;
+                /**
+                 * @description The name of the preset
+                 * @example Bright Lines
+                 */
+                name?: string;
+            }[];
+        };
+        /** @description The available effects for clips, layer (group)s and the composition */
+        Effects: {
+            /** @description The available video effects */
+            video?: components["schemas"]["Effect"][];
+        };
+        /** @description A source to be used in a clip */
+        Source: {
+            /**
+             * @description The unique identifier for the source
+             * @example A401
+             */
+            idstring?: string;
+            /**
+             * @description The descriptive name of the source
+             * @example Gradient
+             */
+            name?: string;
+            /** @description All the presets for this source */
+            presets?: {
+                /**
+                 * Format: int64
+                 * @description The unique identifier for the preset
+                 * @example 2026883901
+                 */
+                id?: number;
+                /**
+                 * @description The name of the preset
+                 * @example Dutch Sky
+                 */
+                name?: string;
+            }[];
+        };
+        /** @description The available sources for clips */
+        Sources: {
+            /** @description The available video sources */
+            video?: components["schemas"]["Source"][];
+        };
+        /** @description Semantic information on the parameter, contains hints about how best to display the parameter */
+        ParameterView: {
+            /**
+             * @description The suffix to display for the variable. May be empty
+             * @example %
+             */
+            suffix?: string;
+            /**
+             * Format: double
+             * @description Value increments to be used for e.g. sliding or rotary controls
+             * @example 1
+             */
+            step?: number;
+            /**
+             * Format: double
+             * @description Value to multiply with when displaying value. For a parameter with a value between 0 and 1 should display as 0 to 100
+             * @example 1
+             */
+            multiplier?: number;
+            /**
+             * @description Which units to display.
+             * @enum {string}
+             */
+            display_units?: ParameterViewDisplay_units;
+            /**
+             * @description Which control to show for the parameter
+             * @enum {string}
+             */
+            control_type?: ParameterViewControl_type;
+        };
+        /** @description A parameter containing string data */
+        StringParameter: {
+            /**
+             * Format: int64
+             * @description The unique identifier of the parameter
+             * @example 1641335430527
+             */
+            id?: number;
+            /**
+             * @description The parameter type. This is "ParamString" for this type
+             * @example ParamString
+             */
+            valuetype?: string;
+            /** @description The value for the parameter */
+            value?: string;
+            view?: components["schemas"]["ParameterView"];
+        };
+        /** @description A parameter containing a true or false value */
+        BooleanParameter: {
+            /**
+             * Format: int64
+             * @description The unique identifier of the parameter
+             * @example 1648023491239
+             */
+            id?: number;
+            /**
+             * @description The parameter type. This is "ParamBoolean" for this type
+             * @example ParamBoolean
+             */
+            valuetype?: string;
+            /** @description The value for the parameter */
+            value?: boolean;
+            view?: components["schemas"]["ParameterView"];
+        };
+        /** @description A parameter containing a floating-point value with a minimum and maximum allowed value. */
+        RangeParameter: {
+            /**
+             * Format: int64
+             * @description The unique identifier of the parameter
+             * @example 1824357891293
+             */
+            id?: number;
+            /**
+             * @description The parameter type. This is "ParamRange" for this type
+             * @example ParamRange
+             */
+            valuetype?: string;
+            /**
+             * Format: double
+             * @description The lowest allowed value for the parameter, inclusive
+             * @example 0
+             */
+            min?: number;
+            /**
+             * Format: double
+             * @description The highest allowed value for the parameter, inclusive
+             * @example 100
+             */
+            max?: number;
+            /**
+             * Format: double
+             * @description The lowest value we clamped the range to, inclusive
+             * @example 25
+             */
+            in?: number;
+            /**
+             * Format: double
+             * @description The highest value we clamped the range to, inclusive
+             * @example 75
+             */
+            out?: number;
+            /**
+             * Format: double
+             * @description The value for the parameter
+             * @example 50
+             */
+            value?: number;
+            view?: components["schemas"]["ParameterView"];
+        };
+        /** @description A multiple-choice parameter */
+        ChoiceParameter: {
+            /**
+             * Format: int64
+             * @description The unique identifier of the parameter
+             * @example 1673448923421
+             */
+            id?: number;
+            /**
+             * @description The parameter type. This is "ParamChoice" or "ParamState" for this type
+             * @example ParamChoice
+             */
+            valuetype?: string;
+            /**
+             * @description The value of the selected option
+             * @example Option 1
+             */
+            value?: string;
+            /**
+             * Format: int32
+             * @description The index of the selected option within the options
+             * @example 0
+             */
+            index?: number;
+            /**
+             * @description The list of available options for the parameter
+             * @example [
+             *       "Option 1",
+             *       "Option 2",
+             *       "Option 3"
+             *     ]
+             */
+            options?: string[];
+            view?: components["schemas"]["ParameterView"];
+        };
+        /** @description A parameter containing string data, possibly multiline */
+        TextParameter: {
+            /**
+             * Format: int64
+             * @description The unique identifier of the parameter
+             * @example 1638334400287
+             */
+            id?: number;
+            /**
+             * @description The parameter type. This is "ParamText" for this type
+             * @example ParamText
+             */
+            valuetype?: string;
+            /**
+             * @description The value for the parameter
+             * @example Some
+             *     Multiline
+             *     String
+             *
+             */
+            value?: unknown;
+            view?: components["schemas"]["ParameterView"];
+        };
+        /** @description A parameter containing numeric data */
+        IntegerParameter: {
+            /**
+             * Format: int64
+             * @description The unique identifier of the parameter
+             * @example 1723491095783
+             */
+            id?: number;
+            /**
+             * @description The parameter type. This is "ParamNumber" for this type
+             * @example ParamNumber
+             */
+            valuetype?: string;
+            /**
+             * Format: int64
+             * @description The value for the parameter
+             * @example 100
+             */
+            value?: number;
+            view?: components["schemas"]["ParameterView"];
+        };
+        /** @description A parameter containing color data */
+        ColorParameter: {
+            /**
+             * Format: int64
+             * @description The unique identifier of the parameter
+             * @example 1682459812085
+             */
+            id?: number;
+            /**
+             * @description The parameter type. This is "ParamColor" for this type
+             * @example ParamColor
+             */
+            valuetype?: string;
+            /**
+             * @description The color value. This always starts with a '#', followed by a number of hexadecimal values representing rgb and - optionally - the alpha channel. Each channel may be either represented by a single character - in which case the values are from 0 to 15 - or by two characters - allowing a range from 0 to 255 per channel.
+             * @example #ffffff
+             */
+            value?: string;
+            /**
+             * @description Array of colors
+             * @example [
+             *       "#ffffff",
+             *       "#ff00ff",
+             *       "#000"
+             *     ]
+             */
+            palette?: string[];
+            view?: components["schemas"]["ParameterView"];
+        };
+        /** @description An unstructured collection of parameters. Parameters are presented as a map where the key is the name of the parameter and the value is the parameter itself. Parameters may be any valid parameter type. */
+        ParameterCollection: {
+            [key: string]: (components["schemas"]["StringParameter"] | components["schemas"]["TextParameter"] | components["schemas"]["BooleanParameter"] | components["schemas"]["IntegerParameter"] | components["schemas"]["ColorParameter"] | components["schemas"]["RangeParameter"] | components["schemas"]["ChoiceParameter"]) | undefined;
+        };
+        /** @description An audioeffect represents a single effect in a chain of effects to be applied to a source. Properties on the audioeffect control how and what is rendered in the effect. */
+        AudioEffect: {
+            /**
+             * Format: int64
+             * @description The unique id of the audio effect instance
+             */
+            readonly id?: number;
+            /**
+             * @description The name of the effect
+             * @example Distortion
+             */
+            name?: string;
+            bypassed?: components["schemas"]["BooleanParameter"];
+            params?: components["schemas"]["ParameterCollection"];
+        };
+        /** @description An audio track, as part of a clip,layer,group or a composition */
+        AudioTrack: {
+            volume?: components["schemas"]["RangeParameter"];
+            pan?: components["schemas"]["RangeParameter"];
+            /** @description All the effects that may be applied when the audio track is played */
+            effects?: components["schemas"]["AudioEffect"][];
+        } | null;
+        /** @description A videoeffect represents a single effect in a chain of effects to be applied to a source. Properties on the videoeffect control how and what is rendered in the effect. */
+        VideoEffect: {
+            /**
+             * Format: int64
+             * @description The unique id of the video effect instance
+             * @example 1723069642348
+             */
+            readonly id?: number;
+            /**
+             * @description The unique name of the key
+             * @example ChromaKey
+             */
+            name?: string;
+            /**
+             * @description The name to show the user
+             * @example ChromaKey
+             */
+            display_name?: string;
+            bypassed?: components["schemas"]["BooleanParameter"] & unknown & unknown;
+            mixer?: components["schemas"]["ParameterCollection"];
+            params?: components["schemas"]["ParameterCollection"];
+            effect?: components["schemas"]["ParameterCollection"];
+        };
+        /** @description A video track, as part of a clip,layer,group or a composition */
+        VideoTrack: {
+            width?: components["schemas"]["RangeParameter"];
+            height?: components["schemas"]["RangeParameter"];
+            opacity?: components["schemas"]["RangeParameter"];
+            mixer?: components["schemas"]["ParameterCollection"];
+            /** @description All the effects that may be applied when the video track is played */
+            effects?: components["schemas"]["VideoEffect"][];
+        } | null;
+        /** @description A parameter that handles events, but does not contain a value */
+        EventParameter: {
+            /**
+             * Format: int64
+             * @description The unique identifier of the parameter
+             * @example 1865335878211
+             */
+            readonly id?: number;
+            /**
+             * @description The parameter type. This is "ParamEvent" for this type
+             * @example ParamEvent
+             */
+            readonly valuetype?: string;
+            view?: components["schemas"]["ParameterView"];
+        };
+        /** @description Cross fade between two clips */
+        CrossFader: {
+            /**
+             * Format: int64
+             * @description The unique identifier of the cross fader
+             * @example 1
+             */
+            readonly id?: number;
+            phase?: components["schemas"]["RangeParameter"];
+            behaviour?: components["schemas"]["ChoiceParameter"];
+            curve?: components["schemas"]["ChoiceParameter"];
+            sidea?: components["schemas"]["EventParameter"];
+            sideb?: components["schemas"]["EventParameter"];
+            mixer?: components["schemas"]["ParameterCollection"];
+        };
+        /** @description A deck contains a full set of layers and clips. Only the layers and clips of the active deck can be retrieved and updated. */
+        Deck: {
+            /**
+             * Format: int64
+             * @description The unique identifier of the deck
+             * @example 1641549604727
+             */
+            readonly id?: number;
+            name?: components["schemas"]["StringParameter"];
+            colorid?: components["schemas"]["ChoiceParameter"];
+            /** @description Get whether the deck is currently selected */
+            readonly selected?: components["schemas"]["BooleanParameter"];
+            scrollx?: components["schemas"]["IntegerParameter"];
+        };
+        VideoTrackLayer: components["schemas"]["VideoTrack"] & {
+            autosize?: components["schemas"]["ChoiceParameter"];
+        };
+        /** @description A layer transition describes the transition between clips within the layer */
+        LayerTransition: {
+            duration?: components["schemas"]["RangeParameter"];
+            blend_mode?: components["schemas"]["ChoiceParameter"];
+        };
+        /** @description The timeline transport controls */
+        TransportTimeline: {
+            position?: components["schemas"]["RangeParameter"];
+            /** @description Timeline controls */
+            controls?: {
+                playdirection?: components["schemas"]["ChoiceParameter"];
+                playmode?: components["schemas"]["ChoiceParameter"];
+                playmodeaway?: components["schemas"]["ChoiceParameter"];
+                duration?: components["schemas"]["RangeParameter"];
+                speed?: components["schemas"]["RangeParameter"];
+            };
+        } | null;
+        /** @description The timeline transport controls */
+        TransportBPMSync: {
+            position?: components["schemas"]["RangeParameter"];
+            /** @description BPM Sync controls */
+            controls?: {
+                playdirection?: components["schemas"]["ChoiceParameter"];
+                playmode?: components["schemas"]["ChoiceParameter"];
+                playmodeaway?: components["schemas"]["ChoiceParameter"];
+                duration?: components["schemas"]["RangeParameter"];
+                speed?: components["schemas"]["RangeParameter"];
+                bpm?: components["schemas"]["RangeParameter"];
+                syncmode?: components["schemas"]["ChoiceParameter"];
+                beatloop?: components["schemas"]["ChoiceParameter"];
+            };
+        } | null;
+        /** @description Meta information for an audio file */
+        AudioFileInfo: {
+            /**
+             * @description The location of the file on disk
+             * @example /Users/Resolume/Music/Track1.wav
+             */
+            path?: string;
+            /**
+             * @description Whether file is actully present on disk at the given location
+             * @example true
+             */
+            exists?: boolean;
+            /**
+             * @description Duration of file expressed as hours:seconds:minutes:milliseconds
+             * @example 00:12:08.085
+             */
+            duration?: string;
+            /**
+             * Format: double
+             * @description Duration of file expressed as milliseconds
+             * @example 728084.8979591837
+             */
+            duration_ms?: number;
+            /**
+             * Format: double
+             * @description Sample rate expressed in Hertz
+             * @example 44100
+             */
+            sample_rate?: number;
+            /**
+             * Format: int32
+             * @description Number of audio channels
+             * @example 2
+             */
+            num_channels?: number;
+            /**
+             * Format: double
+             * @description Bpm rate expressed in beats
+             * @example 0
+             */
+            bpm?: number;
+        } | null;
+        AudioTrackClip: components["schemas"]["AudioTrack"] & {
+            /** @description The description of the source belonging to this audio track */
+            description?: string;
+            fileinfo?: components["schemas"]["AudioFileInfo"];
+        };
+        /** @description Frame rate expressed as ratio */
+        FrameRate: {
+            /**
+             * Format: int32
+             * @description Numerator
+             * @example 24000
+             */
+            num?: number;
+            /**
+             * Format: int32
+             * @description Denominator
+             * @example 1001
+             */
+            denom?: number;
+        };
+        /** @description Meta information for a video file */
+        VideoFileInfo: {
+            /**
+             * @description The location of the file on disk
+             * @example /Users/Resolume/Videos/Clip1.mov
+             */
+            path?: string;
+            /**
+             * @description Whether file is actually present on disk at the given location
+             * @example true
+             */
+            exists?: boolean;
+            /**
+             * @description Duration of file expressed as hours:seconds:minutes:milliseconds
+             * @example 00:00:19.06
+             */
+            duration?: string;
+            /**
+             * Format: double
+             * @description Duration of file expressed as milliseconds
+             * @example 19269.249999999996
+             */
+            readonly duration_ms?: number;
+            framerate?: components["schemas"]["FrameRate"];
+            /**
+             * Format: int32
+             * @description The number of pixels the video is wide
+             * @example 1920
+             */
+            width?: number;
+            /**
+             * Format: int32
+             * @description The number of pixels the video is high
+             * @example 1080
+             */
+            height?: number;
+        } | null;
+        VideoTrackClip: components["schemas"]["VideoTrack"] & {
+            /**
+             * @description The description of the source belonging to this video track
+             * @example Clip1.mov\nDXV 3.0 Normal Quality, With Alpha, 1920x1080, 23.98 Fps\r\n00:00:19.269
+             */
+            description?: string;
+            fileinfo?: components["schemas"]["VideoFileInfo"];
+            resize?: components["schemas"]["ChoiceParameter"];
+            r?: components["schemas"]["BooleanParameter"];
+            g?: components["schemas"]["BooleanParameter"];
+            b?: components["schemas"]["BooleanParameter"];
+            a?: components["schemas"]["BooleanParameter"];
+            sourceparams?: components["schemas"]["ParameterCollection"] & unknown & unknown;
+        };
+        /** @description A single clip in the composition, which may contain a video and/or audio track */
+        Clip: {
+            /**
+             * Format: int64
+             * @description The unique id of the clip
+             * @example 1641549604745
+             */
+            readonly id?: number;
+            name?: components["schemas"]["StringParameter"];
+            colorid?: components["schemas"]["ChoiceParameter"];
+            /** @description Get whether the clip is currently selected. If a clip is selected the properties will show up in Arena or Avenue and in the example react application. */
+            readonly selected?: components["schemas"]["BooleanParameter"];
+            /** @description Get whether the clip is currently connected. */
+            readonly connected?: components["schemas"]["ChoiceParameter"];
+            target?: components["schemas"]["ChoiceParameter"];
+            triggerstyle?: components["schemas"]["ChoiceParameter"];
+            ignorecolumntrigger?: components["schemas"]["ChoiceParameter"];
+            faderstart?: components["schemas"]["ChoiceParameter"];
+            beatsnap?: components["schemas"]["ChoiceParameter"];
+            transporttype?: components["schemas"]["ChoiceParameter"];
+            /** @description Only Timeline and BPM Sync transport types are supported at the moment */
+            transport?: components["schemas"]["TransportTimeline"] | components["schemas"]["TransportBPMSync"];
+            dashboard?: components["schemas"]["ParameterCollection"];
+            audio?: components["schemas"]["AudioTrackClip"];
+            video?: components["schemas"]["VideoTrackClip"];
+            /** @description The thumbnail properties contain information with the latest update to the thumbnail, the size (in bytes) and whether it contains the 'default' thumbnail, meaning it doesn't contain a video or audio track */
+            readonly thumbnail?: {
+                /**
+                 * Format: int64
+                 * @description The number of bytes of data in the thumbnail
+                 * @example 1048576
+                 */
+                size?: number;
+                /**
+                 * @description The timestamp of the last update, in milliseconds. Given as a string to prevent lesser languages from truncating the value
+                 * @example 0
+                 */
+                last_update?: string;
+                /**
+                 * @description Get whether this is a default thumbnail, shared between all clips that don't have any video or audio tracks
+                 * @example true
+                 */
+                is_default?: boolean;
+            };
+        };
+        /** @description AutoPilot options to control automatic clip transitions */
+        AutoPilot: {
+            target?: components["schemas"]["ChoiceParameter"];
+        } | null;
+        /** @description A layer is a container for clips that has its own dashboard and can be selected */
+        Layer: {
+            /**
+             * Format: int64
+             * @description The unique id for the layer
+             * @example 1641549604807
+             */
+            readonly id?: number;
+            name?: components["schemas"]["StringParameter"];
+            colorid?: components["schemas"]["ChoiceParameter"];
+            /** @description Get whether the layer is currently selected */
+            readonly selected?: components["schemas"]["BooleanParameter"];
+            bypassed?: components["schemas"]["BooleanParameter"];
+            solo?: components["schemas"]["BooleanParameter"];
+            crossfadergroup?: components["schemas"]["ChoiceParameter"];
+            master?: components["schemas"]["RangeParameter"];
+            maskmode?: components["schemas"]["ChoiceParameter"];
+            ignorecolumntrigger?: components["schemas"]["BooleanParameter"];
+            faderstart?: components["schemas"]["BooleanParameter"];
+            dashboard?: components["schemas"]["ParameterCollection"];
+            audio?: components["schemas"]["AudioTrack"];
+            video?: components["schemas"]["VideoTrackLayer"];
+            transition?: components["schemas"]["LayerTransition"];
+            /** @description All clips belonging to this layer */
+            clips?: components["schemas"]["Clip"][];
+            autopilot?: components["schemas"]["AutoPilot"];
+        };
+        /** @description A column within a deck */
+        Column: {
+            /**
+             * Format: int64
+             * @description The unique identifier of the column
+             * @example 1641549605447
+             */
+            readonly id?: number;
+            name?: components["schemas"]["StringParameter"];
+            colorid?: components["schemas"]["ChoiceParameter"];
+            /** @description Get whether the column is currently connected */
+            readonly connected?: components["schemas"]["ChoiceParameter"];
+        };
+        /** @description A collection of layers, allowing controlling of a group of layers as a single object */
+        LayerGroup: {
+            /**
+             * Format: int64
+             * @description The unique id for the layer group
+             * @example 1641549604808
+             */
+            readonly id?: number;
+            name?: components["schemas"]["StringParameter"];
+            colorid?: components["schemas"]["ChoiceParameter"];
+            /** @description Get whether the layer group is currently selected */
+            readonly selected?: components["schemas"]["BooleanParameter"];
+            bypassed?: components["schemas"]["BooleanParameter"];
+            solo?: components["schemas"]["BooleanParameter"];
+            crossfadergroup?: components["schemas"]["ChoiceParameter"];
+            master?: components["schemas"]["RangeParameter"];
+            speed?: components["schemas"]["RangeParameter"];
+            ignorecolumntrigger?: components["schemas"]["BooleanParameter"];
+            dashboard?: components["schemas"]["ParameterCollection"];
+            audio?: components["schemas"]["AudioTrack"];
+            video?: components["schemas"]["VideoTrack"];
+            /** @description All the layers added to the layer group */
+            layers?: components["schemas"]["Layer"][];
+        };
+        /** @description The controller for various tempo-related aspects of the composition */
+        TempoController: {
+            tempo?: components["schemas"]["RangeParameter"];
+            tempo_pull?: components["schemas"]["EventParameter"];
+            tempo_push?: components["schemas"]["EventParameter"];
+            tempo_tap?: components["schemas"]["EventParameter"];
+            resync?: components["schemas"]["EventParameter"];
+        };
+        /** @description The complete composition, containing all the decks, layers, clips and their effects */
+        Composition: {
+            name?: components["schemas"]["StringParameter"];
+            selected?: components["schemas"]["BooleanParameter"] & unknown;
+            bypassed?: components["schemas"]["BooleanParameter"];
+            master?: components["schemas"]["RangeParameter"];
+            speed?: components["schemas"]["RangeParameter"];
+            cliptarget?: components["schemas"]["ChoiceParameter"];
+            cliptriggerstyle?: components["schemas"]["ChoiceParameter"];
+            clipbeatsnap?: components["schemas"]["ChoiceParameter"];
+            dashboard?: components["schemas"]["ParameterCollection"];
+            audio?: components["schemas"]["AudioTrack"];
+            video?: components["schemas"]["VideoTrack"];
+            crossfader?: components["schemas"]["CrossFader"];
+            /** @description All decks in the composition */
+            decks?: components["schemas"]["Deck"][];
+            /** @description All layers in the composition */
+            layers?: components["schemas"]["Layer"][];
+            /** @description All columns in the composition */
+            columns?: components["schemas"]["Column"][];
+            /** @description All layergroups in the composition */
+            layergroups?: components["schemas"]["LayerGroup"][];
+            tempo_controller?: components["schemas"]["TempoController"];
+        };
+        /** @description Options for resetting a parameter, should only the value be reset, or should animations also be reset */
+        ResetParameter: {
+            /** @description If set to true, animations are also reset */
+            resetanimation?: boolean;
+        };
     };
-    /** @description A source to be used in a clip */
-    Source: {
-      /**
-       * @description The unique identifier for the source 
-       * @example GeneratorVideoSource
-       */
-      idstring?: string;
-      /**
-       * @description The desriptive name of the source 
-       * @example GeneratorSourceExtension
-       */
-      name?: string;
-      /** @description All the presets for this source */
-      presets?: (string)[];
-    };
-    /** @description The available sources for clips */
-    Sources: {
-      /** @description The available video sources */
-      video?: (components["schemas"]["Source"])[];
-    };
-    /** @description Options for resetting a parameter, should only the value be reset, or should animations also be reset */
-    ResetParameter: {
-      /** @description If set to true, animations are also reset */
-      resetanimation?: boolean;
-    };
-    /** @description Semantic information on the parameter, contains hints about how best to display the parameter */
-    readonly ParameterView: {
-      /**
-       * @description The suffix to display for the variable. May be empty 
-       * @example %
-       */
-      readonly suffix?: string;
-      /**
-       * Format: double 
-       * @description Value increments to be used for e.g. sliding or rotary controls 
-       * @example 1
-       */
-      readonly step?: number;
-      /**
-       * Format: double 
-       * @description Value to multiply with when displaying value. For a parameter with a value between 0 and 1 should display as 0 to 100 
-       * @example 1
-       */
-      readonly multiplier?: number;
-      /**
-       * @description Which units to display. 
-       * @enum {string}
-       */
-      readonly display_units?: "real" | "integer" | "percent" | "degrees" | "decibels" | "frames_per_second" | "milliseconds" | "seconds" | "beats" | "fractions";
-      /**
-       * @description Which control to show for the parameter 
-       * @enum {string}
-       */
-      readonly control_type?: "based_on_param" | "choice_buttons" | "choice_combobox" | "spinner" | "duration_spinner" | "slider" | "slider_color_red" | "slider_color_green" | "slider_color_blue" | "slider_color_hue" | "slider_color_saturation" | "slider_color_brightness" | "slider_color_alpha" | "slider_color_opacity" | "color_pallette" | "color_picker" | "rotary" | "text" | "text_multiline";
-    };
-    /** @description A parameter containing string data */
-    StringParameter: {
-      /**
-       * Format: int64 
-       * @description The unique identifier of the parameter 
-       * @example 1641335430527
-       */
-      id?: number;
-      /**
-       * @description The parameter type. This is "ParamString" for this type 
-       * @example ParamString
-       */
-      valuetype?: string;
-      /** @description The value for the parameter */
-      value?: string;
-      view?: components["schemas"]["ParameterView"];
-    };
-    /** @description A parameter containing string data, possibly multiline */
-    TextParameter: {
-      /**
-       * Format: int64 
-       * @description The unique identifier of the parameter 
-       * @example 1638334400287
-       */
-      id?: number;
-      /**
-       * @description The parameter type. This is "ParamText" for this type 
-       * @example ParamText
-       */
-      valuetype?: string;
-      /**
-       * @description The value for the parameter 
-       * @example Some
-       * Multiline
-       * String
-       */
-      value?: Record<string, never>;
-      view?: components["schemas"]["ParameterView"];
-    };
-    /** @description A parameter containing a true or false value */
-    BooleanParameter: {
-      /**
-       * Format: int64 
-       * @description The unique identifier of the parameter 
-       * @example 1648023491239
-       */
-      id?: number;
-      /**
-       * @description The parameter type. This is "ParamBoolean" for this type 
-       * @example ParamBoolean
-       */
-      valuetype?: string;
-      /** @description The value for the parameter */
-      value?: boolean;
-      view?: components["schemas"]["ParameterView"];
-    };
-    /** @description A parameter containing numeric data */
-    IntegerParameter: {
-      /**
-       * Format: int64 
-       * @description The unique identifier of the parameter 
-       * @example 1723491095783
-       */
-      id?: number;
-      /**
-       * @description The parameter type. This is "ParamNumber" for this type 
-       * @example ParamNumber
-       */
-      valuetype?: string;
-      /**
-       * Format: int64 
-       * @description The value for the parameter 
-       * @example 100
-       */
-      value?: number;
-      view?: components["schemas"]["ParameterView"];
-    };
-    /** @description A parameter containing color data */
-    ColorParameter: {
-      /**
-       * Format: int64 
-       * @description The unique identifier of the parameter 
-       * @example 1682459812085
-       */
-      id?: number;
-      /**
-       * @description The parameter type. This is "ParamColor" for this type 
-       * @example ParamColor
-       */
-      valuetype?: string;
-      /**
-       * @description The color value. This always starts with a '#', followed by a number of hexadecimal values representing rgb and - optionally - the alpha channel. Each channel may be either represented by a single character - in which case the values are from 0 to 15 - or by two characters - allowing a range from 0 to 255 per channel. 
-       * @example #ffffff
-       */
-      value?: string;
-      /**
-       * @description Array of colors 
-       * @example [
-       *   "#ffffff",
-       *   "#ff00ff",
-       *   "#000"
-       * ]
-       */
-      palette?: (string)[];
-      view?: components["schemas"]["ParameterView"];
-    };
-    /** @description A parameter containing a floating-point value with a minimum and maximum allowed value. */
-    RangeParameter: {
-      /**
-       * Format: int64 
-       * @description The unique identifier of the parameter 
-       * @example 1824357891293
-       */
-      id?: number;
-      /**
-       * @description The parameter type. This is "ParamRange" for this type 
-       * @example ParamRange
-       */
-      valuetype?: string;
-      /**
-       * Format: double 
-       * @description The lowest allowed value for the parameter, inclusive 
-       * @example 0
-       */
-      min?: number;
-      /**
-       * Format: double 
-       * @description The highest allowed value for the parameter, inclusive 
-       * @example 100
-       */
-      max?: number;
-      /**
-       * Format: double 
-       * @description The value for the parameter 
-       * @example 50
-       */
-      value?: number;
-      view?: components["schemas"]["ParameterView"];
-    };
-    /** @description A multiple-choice parameter */
-    ChoiceParameter: {
-      /**
-       * Format: int64 
-       * @description The unique identifier of the parameter 
-       * @example 1673448923421
-       */
-      id?: number;
-      /**
-       * @description The parameter type. This is "ParamChoice" or "ParamState" for this type 
-       * @example ParamChoice
-       */
-      valuetype?: string;
-      /**
-       * @description The value of the selected option 
-       * @example Option 1
-       */
-      value?: string;
-      /**
-       * Format: int32 
-       * @description The index of the selected option within the options 
-       * @example 0
-       */
-      index?: number;
-      /**
-       * @description The list of available options for the parameter 
-       * @example [
-       *   "Option 1",
-       *   "Option 2",
-       *   "Option 3"
-       * ]
-       */
-      options?: (string)[];
-      view?: components["schemas"]["ParameterView"];
-    };
-    /** @description A parameter that handles events, but does not contain a value */
-    EventParameter: {
-      /**
-       * Format: int64 
-       * @description The unique identifier of the parameter 
-       * @example 1865335878211
-       */
-      id?: number;
-      /**
-       * @description The parameter type. This is "ParamEvent" for this type 
-       * @example ParamEvent
-       */
-      valuetype?: string;
-      view?: components["schemas"]["ParameterView"];
-    };
-    /** @description An unstructured collection of parameters. Parameters are presented as a map where the key is the name of the parameter and the value is the parameter itself. Parameters may be any valid parameter type. */
-    ParameterCollection: {
-      [key: string]: (components["schemas"]["StringParameter"] | components["schemas"]["TextParameter"] | components["schemas"]["BooleanParameter"] | components["schemas"]["IntegerParameter"] | components["schemas"]["ColorParameter"] | components["schemas"]["RangeParameter"] | components["schemas"]["ChoiceParameter"]) | undefined;
-    };
-    /** @description A videoeffect represents a single effect in a chain of effects to be applied to a source. Properties on the videoeffect control how and what is rendered in the effect. */
-    VideoEffect: {
-      /**
-       * Format: int64 
-       * @description The unique id of the video effect instance 
-       * @example 1723069642348
-       */
-      id?: number;
-      /**
-       * @description The name of the effect 
-       * @example ChromaKey
-       */
-      name?: string;
-      bypassed?: components["schemas"]["BooleanParameter"] & Record<string, never> & (Record<string, unknown> | null);
-      mixer?: components["schemas"]["ParameterCollection"];
-      params?: components["schemas"]["ParameterCollection"];
-      effect?: components["schemas"]["ParameterCollection"];
-    };
-    /** @description An audioeffect represents a single effect in a chain of effects to be applied to a source. Properties on the audioeffect control how and what is rendered in the effect. */
-    AudioEffect: {
-      /**
-       * Format: int64 
-       * @description The unique id of the audio effect instance
-       */
-      id?: number;
-      /**
-       * @description The name of the effect 
-       * @example Distortion
-       */
-      name?: string;
-      bypassed?: components["schemas"]["BooleanParameter"];
-      params?: components["schemas"]["ParameterCollection"];
-    };
-    /** @description A video track, as part of a clip,layer,group or a composition */
-    VideoTrack: {
-      /**
-       * Format: int32 
-       * @description The number of pixels the clip is wide 
-       * @example 1920
-       */
-      width?: number;
-      /**
-       * Format: int32 
-       * @description The number of pixels the clip is high 
-       * @example 1080
-       */
-      height?: number;
-      opacity?: components["schemas"]["RangeParameter"];
-      mixer?: components["schemas"]["ParameterCollection"];
-      /** @description All the effects that may be applied when the video track is played */
-      effects?: (components["schemas"]["VideoEffect"])[];
-    } | null;
-    VideoTrackLayer: components["schemas"]["VideoTrack"] & {
-      autosize?: components["schemas"]["ChoiceParameter"];
-    };
-    /** @description Frame rate expressed as ratio */
-    readonly FrameRate: {
-      /**
-       * Format: int32 
-       * @description Numerator 
-       * @example 24000
-       */
-      readonly num?: number;
-      /**
-       * Format: int32 
-       * @description Denominator 
-       * @example 1001
-       */
-      readonly denom?: number;
-    };
-    /** @description Meta information for a video file */
-    readonly VideoFileInfo: {
-      /**
-       * @description The location of the file on disk 
-       * @example /Users/Resolume/Videos/Clip1.mov
-       */
-      readonly path?: string;
-      /**
-       * @description Whether file is actually present on disk at the given location 
-       * @example true
-       */
-      readonly exists?: boolean;
-      /**
-       * @description Duration of file expressed as hours:seconds:minutes:milliseconds 
-       * @example 00:00:19.06
-       */
-      readonly duration?: string;
-      /**
-       * Format: double 
-       * @description Duration of file expressed as milliseconds 
-       * @example 19269.249999999996
-       */
-      readonly duration_ms?: number;
-      readonly framerate?: components["schemas"]["FrameRate"];
-      /**
-       * Format: int32 
-       * @description The number of pixels the video is wide 
-       * @example 1920
-       */
-      readonly width?: number;
-      /**
-       * Format: int32 
-       * @description The number of pixels the video is high 
-       * @example 1080
-       */
-      readonly height?: number;
-    } | null;
-    VideoTrackClip: components["schemas"]["VideoTrack"] & ({
-      /**
-       * @description The description of the source belonging to this video track 
-       * @example Clip1.mov\nDXV 3.0 Normal Quality, With Alpha, 1920x1080, 23.98 Fps\r\n00:00:19.269
-       */
-      description?: string;
-      fileinfo?: components["schemas"]["VideoFileInfo"];
-      resize?: components["schemas"]["ChoiceParameter"];
-      r?: components["schemas"]["BooleanParameter"];
-      g?: components["schemas"]["BooleanParameter"];
-      b?: components["schemas"]["BooleanParameter"];
-      a?: components["schemas"]["BooleanParameter"];
-      sourceparams?: components["schemas"]["ParameterCollection"] & Record<string, never> & (Record<string, unknown> | null);
-    });
-    /** @description An audio track, as part of a clip,layer,group or a composition */
-    AudioTrack: {
-      volume?: components["schemas"]["RangeParameter"];
-      pan?: components["schemas"]["RangeParameter"];
-      /** @description All the effects that may be applied when the audio track is played */
-      effects?: (components["schemas"]["AudioEffect"])[];
-    } | null;
-    /** @description Meta information for an audio file */
-    readonly AudioFileInfo: {
-      /**
-       * @description The location of the file on disk 
-       * @example /Users/Resolume/Music/Track1.wav
-       */
-      readonly path?: string;
-      /**
-       * @description Whether file is actully present on disk at the given location 
-       * @example true
-       */
-      readonly exists?: boolean;
-      /**
-       * @description Duration of file expressed as hours:seconds:minutes:milliseconds 
-       * @example 00:12:08.085
-       */
-      readonly duration?: string;
-      /**
-       * Format: double 
-       * @description Duration of file expressed as milliseconds 
-       * @example 728084.8979591837
-       */
-      readonly duration_ms?: number;
-      /**
-       * Format: double 
-       * @description Sample rate expressed in Hertz 
-       * @example 44100
-       */
-      readonly sample_rate?: number;
-      /**
-       * Format: int32 
-       * @description Number of audio channels 
-       * @example 2
-       */
-      readonly num_channels?: number;
-      /**
-       * Format: double 
-       * @description Bpm rate expressed in beats 
-       * @example 0
-       */
-      readonly bpm?: number;
-    } | null;
-    AudioTrackClip: components["schemas"]["AudioTrack"] & {
-      /** @description The description of the source belonging to this audio track */
-      description?: string;
-      fileinfo?: components["schemas"]["AudioFileInfo"];
-    };
-    /** @description Cross fade between two clips */
-    CrossFader: {
-      /**
-       * Format: int64 
-       * @description The unique identifier of the cross fader 
-       * @example 1
-       */
-      id?: number;
-      phase?: components["schemas"]["RangeParameter"];
-      behaviour?: components["schemas"]["ChoiceParameter"];
-      curve?: components["schemas"]["ChoiceParameter"];
-      sidea?: components["schemas"]["EventParameter"];
-      sideb?: components["schemas"]["EventParameter"];
-      mixer?: components["schemas"]["ParameterCollection"];
-    };
-    /** @description AutoPilot options to control automatic clip transitions */
-    AutoPilot: {
-      target?: components["schemas"]["ChoiceParameter"];
-    } | null;
-    /** @description A deck contains a full set of layers and clips. Only the layers and clips of the active deck can be retrieved and updated. */
-    Deck: {
-      /**
-       * Format: int64 
-       * @description The unique identifier of the deck 
-       * @example 1641549604727
-       */
-      id?: number;
-      name?: components["schemas"]["StringParameter"];
-      colorid?: components["schemas"]["ChoiceParameter"];
-      /** @description Get whether the deck is currently selected */
-      selected?: components["schemas"]["BooleanParameter"];
-      scrollx?: components["schemas"]["IntegerParameter"];
-    };
-    /** @description A column within a deck */
-    Column: {
-      /**
-       * Format: int64 
-       * @description The unique identifier of the column 
-       * @example 1641549605447
-       */
-      id?: number;
-      name?: components["schemas"]["StringParameter"];
-      colorid?: components["schemas"]["ChoiceParameter"];
-      /** @description Get whether the column is currently connected */
-      connected?: components["schemas"]["ChoiceParameter"];
-    };
-    /** @description The timeline transport controls */
-    TransportTimeline: {
-      position?: components["schemas"]["RangeParameter"];
-      /** @description Timeline controls */
-      controls?: {
-        playdirection?: components["schemas"]["ChoiceParameter"];
-        playmode?: components["schemas"]["ChoiceParameter"];
-        playmodeaway?: components["schemas"]["ChoiceParameter"];
-        duration?: components["schemas"]["RangeParameter"];
-        speed?: components["schemas"]["RangeParameter"];
-      };
-    } | null;
-    /** @description The timeline transport controls */
-    TransportBPMSync: {
-      position?: components["schemas"]["RangeParameter"];
-      /** @description BPM Sync controls */
-      controls?: {
-        playdirection?: components["schemas"]["ChoiceParameter"];
-        playmode?: components["schemas"]["ChoiceParameter"];
-        playmodeaway?: components["schemas"]["ChoiceParameter"];
-        duration?: components["schemas"]["RangeParameter"];
-        speed?: components["schemas"]["RangeParameter"];
-        bpm?: components["schemas"]["RangeParameter"];
-        syncmode?: components["schemas"]["ChoiceParameter"];
-        beatloop?: components["schemas"]["ChoiceParameter"];
-      };
-    } | null;
-    /** @description A single clip in the composition, which may contain a video and/or audio track */
-    Clip: {
-      /**
-       * Format: int64 
-       * @description The unique id of the clip 
-       * @example 1641549604745
-       */
-      id?: number;
-      name?: components["schemas"]["StringParameter"];
-      colorid?: components["schemas"]["ChoiceParameter"];
-      /** @description Get whether the clip is currently selected. If a clip is selected the properties will show up in Arena or Avenue and in the example react application. */
-      selected?: components["schemas"]["BooleanParameter"];
-      /** @description Get whether the clip is currently connected. */
-      connected?: components["schemas"]["ChoiceParameter"];
-      target?: components["schemas"]["ChoiceParameter"];
-      triggerstyle?: components["schemas"]["ChoiceParameter"];
-      ignorecolumntrigger?: components["schemas"]["ChoiceParameter"];
-      faderstart?: components["schemas"]["ChoiceParameter"];
-      beatsnap?: components["schemas"]["ChoiceParameter"];
-      transporttype?: components["schemas"]["ChoiceParameter"];
-      /** @description Only Timeline and BPM Sync transport types are supported at the moment */
-      transport?: components["schemas"]["TransportTimeline"] | components["schemas"]["TransportBPMSync"];
-      dashboard?: components["schemas"]["ParameterCollection"];
-      audio?: components["schemas"]["AudioTrackClip"];
-      video?: components["schemas"]["VideoTrackClip"];
-      /** @description The thumbnail properties contain information with the latest update to the thumbnail, the size (in bytes) and whether it contains the 'default' thumbnail, meaning it doesn't contain a video or audio track */
-      thumbnail?: {
-        /**
-         * Format: int64 
-         * @description The number of bytes of data in the thumbnail 
-         * @example 1048576
-         */
-        readonly size?: number;
-        /**
-         * @description The timestamp of the last update, in milliseconds. Given as a string to prevent lesser languages from truncating the value 
-         * @example 0
-         */
-        readonly last_update?: string;
-        /**
-         * @description Get whether this is a default thumbnail, shared between all clips that don't have any video or audio tracks 
-         * @example true
-         */
-        readonly is_default?: boolean;
-      };
-    };
-    /** @description A layer transition describes the transition between clips within the layer */
-    LayerTransition: {
-      duration?: components["schemas"]["RangeParameter"];
-      blend_mode?: components["schemas"]["ChoiceParameter"];
-    };
-    /** @description A layer is a container for clips that has its own dashboard and can be selected */
-    Layer: {
-      /**
-       * Format: int64 
-       * @description The unique id for the layer 
-       * @example 1641549604807
-       */
-      id?: number;
-      name?: components["schemas"]["StringParameter"];
-      colorid?: components["schemas"]["ChoiceParameter"];
-      /** @description Get whether the layer is currently selected */
-      selected?: components["schemas"]["BooleanParameter"];
-      bypassed?: components["schemas"]["BooleanParameter"];
-      solo?: components["schemas"]["BooleanParameter"];
-      crossfadergroup?: components["schemas"]["ChoiceParameter"];
-      master?: components["schemas"]["RangeParameter"];
-      maskmode?: components["schemas"]["ChoiceParameter"];
-      ignorecolumntrigger?: components["schemas"]["BooleanParameter"];
-      faderstart?: components["schemas"]["BooleanParameter"];
-      dashboard?: components["schemas"]["ParameterCollection"];
-      audio?: components["schemas"]["AudioTrack"];
-      video?: components["schemas"]["VideoTrackLayer"];
-      transition?: components["schemas"]["LayerTransition"];
-      /** @description All clips belonging to this layer */
-      clips?: (components["schemas"]["Clip"])[];
-      autopilot?: components["schemas"]["AutoPilot"];
-    };
-    /** @description A collection of layers, allowing controlling of a group of layers as a single object */
-    LayerGroup: {
-      /**
-       * Format: int64 
-       * @description The unique id for the layer group 
-       * @example 1641549604808
-       */
-      id?: number;
-      name?: components["schemas"]["StringParameter"];
-      colorid?: components["schemas"]["ChoiceParameter"];
-      /** @description Get whether the layer group is currently selected */
-      selected?: components["schemas"]["BooleanParameter"];
-      bypassed?: components["schemas"]["BooleanParameter"];
-      solo?: components["schemas"]["BooleanParameter"];
-      crossfadergroup?: components["schemas"]["ChoiceParameter"];
-      master?: components["schemas"]["RangeParameter"];
-      ignorecolumntrigger?: components["schemas"]["BooleanParameter"];
-      dashboard?: components["schemas"]["ParameterCollection"];
-      audio?: components["schemas"]["AudioTrack"];
-      video?: components["schemas"]["VideoTrack"];
-      /** @description All the layers added to the layer group */
-      layers?: (components["schemas"]["Layer"])[];
-    };
-    /** @description The controller for various tempo-related aspects of the composition */
-    TempoController: {
-      tempo?: components["schemas"]["RangeParameter"];
-      tempo_pull?: components["schemas"]["EventParameter"];
-      tempo_push?: components["schemas"]["EventParameter"];
-      tempo_tap?: components["schemas"]["EventParameter"];
-      resync?: components["schemas"]["EventParameter"];
-    };
-    /** @description The complete composition, containing all the decks, layers, clips and their effects */
-    Composition: {
-      name?: components["schemas"]["StringParameter"];
-      selected?: components["schemas"]["BooleanParameter"] & Record<string, never>;
-      bypassed?: components["schemas"]["BooleanParameter"];
-      master?: components["schemas"]["RangeParameter"];
-      speed?: components["schemas"]["RangeParameter"];
-      cliptarget?: components["schemas"]["ChoiceParameter"];
-      cliptriggerstyle?: components["schemas"]["ChoiceParameter"];
-      clipbeatsnap?: components["schemas"]["ChoiceParameter"];
-      dashboard?: components["schemas"]["ParameterCollection"];
-      audio?: components["schemas"]["AudioTrack"];
-      video?: components["schemas"]["VideoTrack"];
-      crossfader?: components["schemas"]["CrossFader"];
-      /** @description All decks in the composition */
-      decks?: (components["schemas"]["Deck"])[];
-      /** @description All layers in the composition */
-      layers?: (components["schemas"]["Layer"])[];
-      /** @description All columns in the composition */
-      columns?: (components["schemas"]["Column"])[];
-      /** @description All layergroups in the composition */
-      layergroups?: (components["schemas"]["LayerGroup"])[];
-      tempo_controller?: components["schemas"]["TempoController"];
-    };
-  };
-  responses: never;
-  parameters: never;
-  requestBodies: never;
-  headers: never;
-  pathItems: never;
-}
-
-export type external = Record<string, never>;
-
+    responses: never;
+    parameters: never;
+    requestBodies: never;
+    headers: never;
+    pathItems: never;
+};
+export type $defs = Record<string, never>;
 export interface operations {
-
-  get_product: {
-    /**
-     * Retrieve product information 
-     * @description This contains the product name and version information
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["ProductInfo"];
-        };
-      };
-    };
-  };
-  get_sources: {
-    /**
-     * Retrieve available sources for clips 
-     * @description Retrieve all sources available to generate clips
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["Sources"];
-        };
-      };
-    };
-  };
-  list_composition: {
-    /**
-     * Retrieve the complete composition 
-     * @description This contains the composition properties, all the decks, layers and clips
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["Composition"];
-        };
-      };
-    };
-  };
-  replace_composition: {
-    /**
-     * Update the complete composition 
-     * @description This allows for updating all parameters in a composition, its decks, layers and clips
-     */
-    /** @description The updated composition properties, with possible decks, layers and/or clips */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Composition"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-    };
-  };
-  reset_composition_param: {
-    /**
-     * Reset a parameter in the composition to its default value. 
-     * @description This resets a parameter on the main composition to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    /** @description Parameter reset options, whether to also reset animations */
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["ResetParameter"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The given parameter does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  get_column: {
-    /**
-     * Retrieve column properties by index 
-     * @description Returns a single column
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["Column"];
-        };
-      };
-      /** @description The requested column does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  replace_column: {
-    /**
-     * Update specific column by index 
-     * @description Update a single column
-     */
-    /** @description The updated column properties */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Column"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The requested column or parameter does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  reset_column_param: {
-    /**
-     * Reset a parameter in a column to its default value. 
-     * @description This resets a parameter on the indexed column to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    /** @description Parameter reset options, whether to also reset animations */
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["ResetParameter"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The given column or parameter does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  column_connect: {
-    /**
-     * Connect the column by index 
-     * @description Connect the column, possibly activating it
-     */
-    /** @description Whether to connect the column. This is analogous to whether the mouse is pressed down on the column. If omitted, true and false are both send - as if a short click was generated */
-    requestBody?: {
-      content: {
-        "application/json": boolean;
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The requested column does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  get_column_by_id: {
-    /**
-     * Retrieve column properties by id 
-     * @description Returns a single column
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["Column"];
-        };
-      };
-      /** @description The requested column does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  replace_column_by_id: {
-    /**
-     * Update specific column by id 
-     * @description Update a single column
-     */
-    /** @description The updated column properties */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Column"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The requested column does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  reset_column_param_by_id: {
-    /**
-     * Reset a parameter in a column to its default value. 
-     * @description This resets a parameter on the indexed column to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    /** @description Parameter reset options, whether to also reset animations */
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["ResetParameter"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The given column or parameter does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  column_connect_by_id: {
-    /**
-     * Connect the column by id 
-     * @description Connect the column, possibly activating it
-     */
-    /** @description Whether to connect the column. This is analogous to whether the mouse is pressed down on the column. If omitted, true and false are both send - as if a short click was generated */
-    requestBody?: {
-      content: {
-        "application/json": boolean;
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The requested column does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  get_layer: {
-    /**
-     * Retrieve layer properties and clip info by index 
-     * @description Returns a single layer and all of its clips
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["Layer"];
-        };
-      };
-      /** @description The requested layer does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  replace_layer: {
-    /**
-     * Update specified layer and/or clips by index 
-     * @description Updates a single layer and all of its clips
-     */
-    /** @description The updated layer and/or clip properties */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Layer"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The requested layer does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  list_selected_layer: {
-    /**
-     * Retrieve layer properties and clip info for the selected layers 
-     * @description Returns a single layer and all of its clips
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["Layer"];
-        };
-      };
-      /** @description No selected layer was found */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  replace_selected_layer: {
-    /**
-     * Update selected layer and/or clips 
-     * @description Updates a single layer and all of its clips
-     */
-    /** @description The updated layer and/or clip properties */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Layer"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description No selected layer was found */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  reset_layer_param: {
-    /**
-     * Reset a parameter in a layer to its default value. 
-     * @description This resets a parameter on the indexed layer to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    /** @description Parameter reset options, whether to also reset animations */
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["ResetParameter"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The given layer or parameter does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  reset_selected_layer_param: {
-    /**
-     * Reset a parameter in the selected layer to its default value. 
-     * @description This resets a parameter on the selected layer to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    /** @description Parameter reset options, whether to also reset animations */
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["ResetParameter"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description No selected layer found or parameter does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  layer_select: {
-    /**
-     * Select the layer by index 
-     * @description Select the layer at the given index
-     */
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The requested layer does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  layer_clear: {
-    /**
-     * Disconnects any playing clips in the layer by index 
-     * @description Disconnects any playing clips in the layer by index
-     */
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The requested layer does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  selected_layer_clear: {
-    /**
-     * Disconnects any playing clips in the selected layer 
-     * @description Disconnects any playing clips in the selected layer
-     */
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description Selected layer not found */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  layer_clear_clips: {
-    /**
-     * Clears all clips in the layer by index 
-     * @description Clears all clips in the layer by index, removing all tracks and settings from the clips
-     */
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The requested layer does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  selected_layer_clear_clips: {
-    /**
-     * Clears all clips in the selected layer 
-     * @description Clears all clips in the selected layer, removing all tracks and settings from the clips
-     */
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description Selected layer not found */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  get_layer_by_id: {
-    /**
-     * Retrieve layer properties and clip info by id 
-     * @description Returns a single layer and all of its clips
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["Layer"];
-        };
-      };
-      /** @description The requested layer does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  replace_layer_by_id: {
-    /**
-     * Update specified layer and/or clips by id 
-     * @description Updates a single layer and all of its clips
-     */
-    /** @description The updated layer and/or clip properties */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Layer"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The requested layer does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  reset_layer_param_by_id: {
-    /**
-     * Reset a parameter in a layer to its default value. 
-     * @description This resets a parameter on the indexed layer to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    /** @description Parameter reset options, whether to also reset animations */
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["ResetParameter"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The given layer or parameter does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  layer_select_by_id: {
-    /**
-     * Select the layer by id 
-     * @description Select the layer with the given id
-     */
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The requested layer does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  layer_clear_by_id: {
-    /**
-     * Disconnects any playing clips in the layer by id 
-     * @description Disconnects any playing clips in the layer by id
-     */
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The requested layer does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  layer_clear_clips_by_id: {
-    /**
-     * Clears all clips in the layer by id 
-     * @description Clears all clips in the layer by id, removing all tracks and settings from the clips
-     */
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The requested layer does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  get_layergroup: {
-    /**
-     * Retrieve layer group properties and layer info by index 
-     * @description Returns a single layer group and all of its layers
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["LayerGroup"];
-        };
-      };
-      /** @description The requested layer group does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  replace_layergroup: {
-    /**
-     * Update specified layer group and/or layers by index 
-     * @description Updates a single layer group and all of its layers
-     */
-    /** @description The updated layer group and/or layer properties */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["LayerGroup"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The requested layer group does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  list_selected_layergroup: {
-    /**
-     * Retrieve selected layer group properties and layer info 
-     * @description Returns a single layer group and all of its layers
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["LayerGroup"];
-        };
-      };
-      /** @description No selected layer group was found */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  replace_selected_layergroup: {
-    /**
-     * Update selected layer group and/or layers 
-     * @description Updates a single layer group and all of its layers
-     */
-    /** @description The updated layer group and/or layer properties */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["LayerGroup"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description No selected layer group was found */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  reset_layer_group_param: {
-    /**
-     * Reset a parameter in a layer group to its default value. 
-     * @description This resets a parameter on the indexed layer group to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    /** @description Parameter reset options, whether to also reset animations */
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["ResetParameter"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The given layer group or parameter does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  reset_selected_layer_group_param: {
-    /**
-     * Reset a parameter in the selected layer group to its default value. 
-     * @description This resets a parameter on the selected layer group to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    /** @description Parameter reset options, whether to also reset animations */
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["ResetParameter"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description No selected layer group found or parameter does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  layergroup_select: {
-    /**
-     * Select the layer group by index 
-     * @description Select the layer group at the given index
-     */
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The requested layer group does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  get_layergroup_by_id: {
-    /**
-     * Retrieve layer group properties and layer info by id 
-     * @description Returns a single layer group and all of its layers
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["LayerGroup"];
-        };
-      };
-      /** @description The requested layer group does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  replace_layergroup_by_id: {
-    /**
-     * Update specified layer and/or clips by id 
-     * @description Updates a single layer group and all of its layers
-     */
-    /** @description The updated layer group and/or layer properties */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["LayerGroup"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The requested layer group does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  reset_layer_group_param_by_id: {
-    /**
-     * Reset a parameter in a layer group to its default value. 
-     * @description This resets a parameter on the indexed layer group to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    /** @description Parameter reset options, whether to also reset animations */
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["ResetParameter"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The given layer group or parameter does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  layergroup_select_by_id: {
-    /**
-     * Select the layer group by id 
-     * @description Select the layer group with the given id
-     */
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The requested layer group does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  get_deck: {
-    /**
-     * Retrieve deck properties by index 
-     * @description Returns a single deck
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["Deck"];
-        };
-      };
-      /** @description The requested deck does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  replace_deck: {
-    /**
-     * Update specific deck by index 
-     * @description Update a single deck
-     */
-    /** @description The updated deck properties */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Deck"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The requested deck does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  reset_deck_param: {
-    /**
-     * Reset a parameter in a deck to its default value. 
-     * @description This resets a parameter on the indexed deck to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    /** @description Parameter reset options, whether to also reset animations */
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["ResetParameter"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The given deck or parameter does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  deck_select: {
-    /**
-     * Select the deck by index 
-     * @description Select the deck at the given index
-     */
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The requested deck does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  get_deck_by_id: {
-    /**
-     * Retrieve deck properties by id 
-     * @description Returns a single deck
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["Deck"];
-        };
-      };
-      /** @description The requested deck does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  replace_deck_by_id: {
-    /**
-     * Update specific deck by id 
-     * @description Update a single deck
-     */
-    /** @description The updated deck properties */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Deck"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The requested deck does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  reset_deck_param_by_id: {
-    /**
-     * Reset a parameter in a deck to its default value. 
-     * @description This resets a parameter on the indexed deck to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    /** @description Parameter reset options, whether to also reset animations */
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["ResetParameter"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The given deck or parameter does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  deck_select_by_id: {
-    /**
-     * Select the deck by id 
-     * @description Select the deck with the given id
-     */
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The requested deck does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  get_clip_by_position: {
-    /**
-     * Retrieve a clip by its position in the clip grid 
-     * @description Retrieve all clip information and associated effects
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["Clip"];
-        };
-      };
-      /** @description The requested layer or clip does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  replace_clip_by_position: {
-    /**
-     * Update clip and/or its effects by position in the clip grid 
-     * @description Update a single clip and its effects
-     */
-    /** @description The updated clip and/or effect properties */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Clip"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The requested layer or clip does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  list_selected_clip: {
-    /**
-     * Retrieve the selected clip 
-     * @description Retrieve all clip information and associated effects
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["Clip"];
-        };
-      };
-      /** @description No selected clip was found */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  replace_selected_clip: {
-    /**
-     * Update selected clip and/or its effects 
-     * @description Update a single clip and its effects
-     */
-    /** @description The updated clip and/or effect properties */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Clip"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description No selected clip was found */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  reset_clip_param: {
-    /**
-     * Reset a parameter in a clip to its default value. 
-     * @description This resets a parameter on the indexed clip to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    /** @description Parameter reset options, whether to also reset animations */
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["ResetParameter"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The given layer, clip or parameter does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  reset_selected_clip_param: {
-    /**
-     * Reset a parameter in the selected clip to its default value. 
-     * @description This resets a parameter on the selected clip to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    /** @description Parameter reset options, whether to also reset animations */
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["ResetParameter"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description No selected clip was found, or parameter does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  clip_select: {
-    /**
-     * Select the clip by its position in the clip grid 
-     * @description Select the clip
-     */
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The requested layer or clip does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  clip_connect: {
-    /**
-     * Connect the clip by its position in the clip grid 
-     * @description Connect the clip, possibly activating it
-     */
-    /** @description Whether to connect the clip. This is analogous to whether the mouse is pressed down on the clip. If omitted, true and false are both send - as if a short click was generated */
-    requestBody?: {
-      content: {
-        "application/json": boolean;
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The requested layer or clip does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  selected_clip_connect: {
-    /**
-     * Connect the selected clip 
-     * @description Connect the clip, possibly activating it
-     */
-    /** @description Whether to connect the clip. This is analogous to whether the mouse is pressed down on the clip. If omitted, true and false are both send - as if a short click was generated */
-    requestBody?: {
-      content: {
-        "application/json": boolean;
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description No selected clip found */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  clip_open: {
-    /**
-     * Loads a file or opens a source into a clip by its position in the clip grid 
-     * @description Loads a file or opens a source into a clip, will retain settings as much as possible
-     */
-    /**
-     * @description The path to the file, in URL format, or a source URL. Special characters are to be encoded using URL-encoding.
-     * As an example, to open a file with path `/Users/Resolume/file 1.mov` you'd use an URL like `file:///Users/Resolume/file%201.mov`.
-     * On Windows id'd be something like `file:///C:/Users/Resolume/file%201.mov`. Note that three forward slashes are needed after the
-     * `file:` part, even on Windows. Opening a source uses the following format: `source:///video/<source name>`, an optional
-     * preset name can be added, `source:///video/<source name>/<preset id>`
-     */
-    requestBody?: {
-      content: {
-        "text/plain": string;
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The given clip URL is invalid */
-      400: {
-        content: {
-        };
-      };
-      /** @description The requested layer or clip does not exist */
-      404: {
-        content: {
-        };
-      };
-      /** @description A precondition failed, the clip cannot be loaded */
-      412: {
-        content: {
-          "text/plain": string;
-        };
-      };
-    };
-  };
-  clip_openfile: {
-    /**
-     * Loads file into clip by its position in the clip grid 
-     * @deprecated 
-     * @description Loads file into clip, will retain settings as much as possible
-     */
-    /**
-     * @description The path to the file, in URL format. Right now only the `file` protocol is supported. Special characters
-     * are to be encoded using URL-encoding. As an example, to open a file with path `/Users/Resolume/file 1.mov`
-     * you'd use an URL like `file:///Users/Resolume/file%201.mov`. On Windows id'd be something like
-     * `file:///C:/Users/Resolume/file%201.mov`. Note that three forward slashes are needed after the `file:` part,
-     * even on Windows.
-     */
-    requestBody?: {
-      content: {
-        "text/plain": string;
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The given clip URL is invalid */
-      400: {
-        content: {
-        };
-      };
-      /** @description The requested layer or clip does not exist */
-      404: {
-        content: {
-        };
-      };
-      /** @description A precondition failed, the clip cannot be loaded */
-      412: {
-        content: {
-          "text/plain": string;
-        };
-      };
-    };
-  };
-  selected_clip_open: {
-    /**
-     * Loads a file or opens a source into the selected clip 
-     * @description Loads a file or opens a source into a clip, will retain settings as much as possible
-     */
-    /**
-     * @description The path to the file, in URL format, or a source URL. Special characters are to be encoded using URL-encoding.
-     * As an example, to open a file with path `/Users/Resolume/file 1.mov` you'd use an URL like `file:///Users/Resolume/file%201.mov`.
-     * On Windows id'd be something like `file:///C:/Users/Resolume/file%201.mov`. Note that three forward slashes are needed after the
-     * `file:` part, even on Windows. Opening a source uses the following format: `source:///video/<source name>`, an optional
-     * preset name can be added, `source:///video/<source name>/<preset id>`
-     */
-    requestBody?: {
-      content: {
-        "text/plain": string;
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The given clip URL is invalid */
-      400: {
-        content: {
-        };
-      };
-      /** @description The requested layer or clip does not exist */
-      404: {
-        content: {
-        };
-      };
-      /** @description A precondition failed, the clip cannot be loaded */
-      412: {
-        content: {
-          "text/plain": string;
-        };
-      };
-    };
-  };
-  selected_clip_openfile: {
-    /**
-     * Loads file into the selected clip 
-     * @deprecated 
-     * @description Loads file into clip, will retain settings as much as possible
-     */
-    /**
-     * @description The path to the file, in URL format. Right now only the `file` protocol is supported. Special characters
-     * are to be encoded using URL-encoding. As an example, to open a file with path `/Users/Resolume/file 1.mov`
-     * you'd use an URL like `file:///Users/Resolume/file%201.mov`. On Windows id'd be something like
-     * `file:///C:/Users/Resolume/file%201.mov`. Note that three forward slashes are needed after the `file:` part,
-     * even on Windows.
-     */
-    requestBody?: {
-      content: {
-        "text/plain": string;
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The given clip URL is invalid */
-      400: {
-        content: {
-        };
-      };
-      /** @description No selected clip found */
-      404: {
-        content: {
-        };
-      };
-      /** @description A precondition failed, the clip cannot be loaded */
-      412: {
-        content: {
-          "text/plain": string;
-        };
-      };
-    };
-  };
-  clip_clear: {
-    /**
-     * Clears the clip by its position in the clip grid 
-     * @description Clears the clip, removing all tracks and settings
-     */
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The requested layer or clip does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  selected_clip_clear: {
-    /**
-     * Clears the selected clip 
-     * @description Clears the clip, removing all tracks and settings
-     */
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description No selected clip found */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  get_clip_by_id: {
-    /**
-     * Retrieve a clip by id 
-     * @description Retrieve all clip information and associated effects
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["Clip"];
-        };
-      };
-      /** @description The requested clip does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  replace_clip_by_id: {
-    /**
-     * Update clip and/or its effects by id 
-     * @description Update a single clip and its effects
-     */
-    /** @description The updated clip and/or effect properties */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Clip"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The requested clip does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  reset_clip_param_by_id: {
-    /**
-     * Reset a parameter in a clip to its default value. 
-     * @description This resets a parameter on the indexed clip to default. If a JSON body is given and 'resetanimation' is set to true, animations are also reset.
-     */
-    /** @description Parameter reset options, whether to also reset animations */
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["ResetParameter"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The given clip or parameter does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  clip_select_by_id: {
-    /**
-     * Select the clip by id 
-     * @description Select the clip
-     */
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The requested clip does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  clip_connect_by_id: {
-    /**
-     * Connect the clip by id 
-     * @description Connect the clip, possibly activating it
-     */
-    /** @description Whether to connect the clip. This is analogous to whether the mouse is pressed down on the clip. If omitted, true and false are both send - as if a short click was generated */
-    requestBody?: {
-      content: {
-        "application/json": boolean;
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The requested clip does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  clip_open_by_id: {
-    /**
-     * Loads a file or opens a source into the selected clip 
-     * @description Loads a file or opens a source into a clip, will retain settings as much as possible
-     */
-    /**
-     * @description The path to the file, in URL format, or a source URL. Special characters are to be encoded using URL-encoding.
-     * As an example, to open a file with path `/Users/Resolume/file 1.mov` you'd use an URL like `file:///Users/Resolume/file%201.mov`.
-     * On Windows id'd be something like `file:///C:/Users/Resolume/file%201.mov`. Note that three forward slashes are needed after the
-     * `file:` part, even on Windows. Opening a source uses the following format: `source:///video/<source name>`, an optional
-     * preset name can be added, `source:///video/<source name>/<preset id>`
-     */
-    requestBody?: {
-      content: {
-        "text/plain": string;
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The given clip URL is invalid */
-      400: {
-        content: {
-        };
-      };
-      /** @description The requested layer or clip does not exist */
-      404: {
-        content: {
-        };
-      };
-      /** @description A precondition failed, the clip cannot be loaded */
-      412: {
-        content: {
-          "text/plain": string;
-        };
-      };
-    };
-  };
-  clip_openfile_by_id: {
-    /**
-     * Loads file into clip with the given unique identifier 
-     * @deprecated 
-     * @description Loads file into clip, will retain settings as much as possible
-     */
-    /**
-     * @description The path to the file, in URL format. Right now only the `file` protocol is supported. Special characters
-     * are to be encoded using URL-encoding. As an example, to open a file with path `/Users/Resolume/file 1.mov`
-     * you'd use an URL like `file:///Users/Resolume/file%201.mov`. On Windows id'd be something like
-     * `file:///C:/Users/Resolume/file%201.mov`. Note that three forward slashes are needed after the `file:` part,
-     * even on Windows.
-     */
-    requestBody?: {
-      content: {
-        "text/plain": string;
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The given clip URL is invalid */
-      400: {
-        content: {
-        };
-      };
-      /** @description The requested clip does not exist */
-      404: {
-        content: {
-        };
-      };
-      /** @description A precondition failed, the clip cannot be loaded */
-      412: {
-        content: {
-          "text/plain": string;
-        };
-      };
-    };
-  };
-  clip_clear_by_id: {
-    /**
-     * Clears the clip with the given unique id 
-     * @description Clears the clip, removing all tracks and settings
-     */
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The requested clip does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  list_clip_thumbnail_by_position: {
-    /**
-     * Retrieve the latest thumbnail belonging to the specified clip 
-     * @description Finds the clip at the given position in the grid and retrieves the latest thumbnail
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "image/png": string;
-        };
-      };
-      /** @description The requested layer or clip does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  list_selected_clip_thumbnail: {
-    /**
-     * Retrieve the latest thumbnail belonging to the selected clip 
-     * @description Finds the selected clip and retrieves the latest thumbnail
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "image/png": string;
-        };
-      };
-      /** @description No selected clip found */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  get_clip_thumbnail_by_position_and_timestamp: {
-    /**
-     * Retrieve the latest thumbnail belonging to the specified clip 
-     * @description Finds the clip at the given position in the grid and retrieves the thumbnail if the thumbnail was last updated at the given timestamp
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "image/png": string;
-        };
-      };
-      /** @description The requested layer or clip does not exist, or the timestamp does not match last update */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  get_last_clip_thumbnail_by_timestamp: {
-    /**
-     * Retrieve the latest thumbnail belonging to the selected clip 
-     * @description Finds the selected clip and retrieves the thumbnail if the thumbnail was last updated at the given timestamp
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "image/png": string;
-        };
-      };
-      /** @description The requested layer or clip does not exist, or the timestamp does not match last update */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  list_clip_thumbnail_by_id: {
-    /**
-     * Retrieve the latest thumbnail belonging to the specified clip 
-     * @description Finds the clip with the given unique id and retrieves the latest thumbnail
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "image/png": string;
-        };
-      };
-      /** @description The requested clip does not exist or the timestamp does not match last update */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  get_clip_thumbnail_by_id_and_timestamp: {
-    /**
-     * Retrieve the latest thumbnail belonging to the specified clip 
-     * @description Finds the clip with the given unique id and retrieves the thumbnail if the thumbnail was last updated at the given timestamp
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "image/png": string;
-        };
-      };
-      /** @description The requested clip does not exist or the timestamp does not match last update */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  list_dummy_thumbnail: {
-    /**
-     * Explicitly retrieve the dummy thumbnails used for clips without a thumbnail 
-     * @description This retrieves the dummy thumbnail that is also used for clips that do not yet have a thumbnail. This is a convenient endpoint for clips when you already know they will not have a clip attached. Clips without thumbnail will have their `last_update` property set to "0". This call always returns the exact same result and it may be cached indefinitely.
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "image/png": string;
-        };
-      };
-    };
-  };
-  get_effect_by_id: {
-    /**
-     * Retrieve effect properties given their unique identifier 
-     * @description Finds the effect in any clip belonging to the composition
-     */
-    responses: {
-      /** @description OK */
-      200: {
-        content: {
-          "application/json": components["schemas"]["AudioEffect"] | components["schemas"]["VideoEffect"];
-        };
-      };
-      /** @description The requested effect does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
-  replace_effect_by_id: {
-    /**
-     * Update effect by id 
-     * @description Update a single effect
-     */
-    /** @description The updated effect properties */
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["AudioEffect"] | components["schemas"]["VideoEffect"];
-      };
-    };
-    responses: {
-      /** @description OK */
-      204: never;
-      /** @description The input JSON cannot be deserialized or contains incompatible data */
-      400: {
-        content: {
-        };
-      };
-      /** @description The requested effect does not exist */
-      404: {
-        content: {
-        };
-      };
-    };
-  };
+    get_product: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProductInfo"];
+                };
+            };
+        };
+    };
+    get_effects: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Effects"];
+                };
+            };
+        };
+    };
+    get_sources: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Sources"];
+                };
+            };
+        };
+    };
+    list_composition: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Composition"];
+                };
+            };
+        };
+    };
+    replace_composition: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The updated composition properties, with possible decks, layers and/or clips */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Composition"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_action: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Indicate whether you want to undo- or redo an action */
+        requestBody?: {
+            content: {
+                "text/plain": PathsCompositionActionPostRequestBodyTextPlain;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description An invalid action was sent. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Action cannot be executed because a file is not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, the action cannot be executed */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    move_effect_composition: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The effect instance to move */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    move_effect_composition_offset: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The offset at which to insert the effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect instance to move */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    add_effect_composition: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The effect to add to the composition */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    add_composition_effect_offset: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect to add to the composition */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification or incorrect offset */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    delete_composition_effect: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No effect found at the given offset */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    reset_composition_param: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        /** @description Parameter reset options, whether to also reset animations */
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ResetParameter"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given parameter does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    get_column: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Column index to use (1-based) */
+                "column-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Column"];
+                };
+            };
+            /** @description The requested column does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    replace_column: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Column index to use (1-based) */
+                "column-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description The updated column properties */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Column"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested column or parameter does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    delete_column: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Column index to use (1-based) */
+                "column-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested column does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_duplicate_column: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Column index to use (1-based) */
+                "column-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested column does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_add_column: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The existing column to add the new column before, if not given, the new column will be added at the end */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    reset_column_param: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Column index to reset parameter on (1-based) */
+                "column-index": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        /** @description Parameter reset options, whether to also reset animations */
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ResetParameter"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given column or parameter does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    column_connect: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Column index to connect (1-based) */
+                "column-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description Whether to connect the column. This is analogous to whether the mouse is pressed down on the column. If omitted, true and false are both send - as if a short click was generated */
+        requestBody?: {
+            content: {
+                "application/json": boolean;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested column does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    get_column_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique column id */
+                "column-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Column"];
+                };
+            };
+            /** @description The requested column does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    replace_column_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique column id */
+                "column-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description The updated column properties */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Column"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested column does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    remove_column_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique column id */
+                "column-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested column does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_duplicate_column_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique column id to use */
+                "column-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested column does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    reset_column_param_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique id of the column to reset parameter on */
+                "column-id": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        /** @description Parameter reset options, whether to also reset animations */
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ResetParameter"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given column or parameter does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    column_connect_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique identifier for the column to connect */
+                "column-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description Whether to connect the column. This is analogous to whether the mouse is pressed down on the column. If omitted, true and false are both send - as if a short click was generated */
+        requestBody?: {
+            content: {
+                "application/json": boolean;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested column does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    get_layer: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Layer"];
+                };
+            };
+            /** @description The requested layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    replace_layer: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description The updated layer and/or clip properties */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Layer"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    delete_layer: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_duplicate_layer: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    move_effect_layer: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect instance to move */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    move_effect_layer_offset: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+                /** @description The offset at which to insert the effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect instance to move */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    add_layer_effect: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect to add to the layer */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exit */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    layer_add_effect_offset: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect to add to the layer */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification or incorrect offset */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exit */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    delete_layer_effect: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No effect found at the given offset or the layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    list_selected_layer: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Layer"];
+                };
+            };
+            /** @description No selected layer was found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    replace_selected_layer: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The updated layer and/or clip properties */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Layer"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No selected layer was found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_duplicate_selected_layer: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No selected layer was found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    add_effect_selected_layer: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The effect to add to the layer */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No selected layer was found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    selected_layer_add_effect_offset: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect to add to the layer */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No selected layer was found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    delete_selected_layer_effect: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No effect found at the given offset or there is no selected layer */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    reset_layer_param: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to reset param on (1-based) */
+                "layer-index": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        /** @description Parameter reset options, whether to also reset animations */
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ResetParameter"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given layer or parameter does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_add_layer: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The existing layer to add the new layer before, if not given, the new layer will be added at the end */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    reset_selected_layer_param: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        /** @description Parameter reset options, whether to also reset animations */
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ResetParameter"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No selected layer found or parameter does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    layer_select: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to select (1-based) */
+                "layer-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    layer_clear: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to clear (1-based) */
+                "layer-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    selected_layer_clear: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Selected layer not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    layer_clear_clips: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to clear clips from (1-based) */
+                "layer-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    selected_layer_clear_clips: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Selected layer not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    get_layer_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to use */
+                "layer-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Layer"];
+                };
+            };
+            /** @description The requested layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    replace_layer_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to use */
+                "layer-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description The updated layer and/or clip properties */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Layer"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    delete_layer_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to use */
+                "layer-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_duplicate_layer_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to use */
+                "layer-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    move_effect_layer_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to use */
+                "layer-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect instance to move */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    move_effect_layer_offset_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to use */
+                "layer-id": number;
+                /** @description The offset at which to insert the effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect instance to move */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    add_effect_layer_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to use */
+                "layer-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect to add to the layer */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exit */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    layer_add_effect_by_id_offset: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to use */
+                "layer-id": number;
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect to add to the layer */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification or incorrect offset */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exit */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    delete_layer_effect_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to use */
+                "layer-id": number;
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No effect found at the given offset or no matching layer was found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    reset_layer_param_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to reset param on (1-based) */
+                "layer-id": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        /** @description Parameter reset options, whether to also reset animations */
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ResetParameter"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given layer or parameter does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    layer_select_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to update */
+                "layer-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    layer_clear_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to clear */
+                "layer-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    layer_clear_clips_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer id to clear clips from */
+                "layer-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    get_layergroup: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LayerGroup"];
+                };
+            };
+            /** @description The requested layer group does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    replace_layergroup: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description The updated layer group and/or layer properties */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LayerGroup"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    delete_layer_group: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_duplicate_layer_group: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_move_layer_to_group: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description The layer to move into the group. This is the path to an existing layer, either identifier by position, or by unique id. */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid layer path given. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_add_layer_to_group: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description The layer to inside the group to place the new layer before. This is the path to an existing layer, either identifier by position, or by unique id. */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid layer path given. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_add_layergroup: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The existing layer to add the new layer group, if not given, a new layer will be created at the end and added to the group, or the layer group to add before. */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    move_effect_layer_group: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect instance to move */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    move_effect_layer_group_offset: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+                /** @description The offset at which to insert the effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect instance to move */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    add_effect_layergroup: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect to add to the layer group */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group does not exit */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    layergroup_add_effect_offset: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect to add to the layer group */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group does not exit */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    delete_layer_group_effect: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No effect found at the given offset or no matching layer group was found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    layer_group_column_connect: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+                /** @description Column index to connect (1-based) */
+                "column-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description Whether to connect the column. This is analogous to whether the mouse is pressed down on the column. If omitted, true and false are both send - as if a short click was generated */
+        requestBody?: {
+            content: {
+                "application/json": boolean;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group or column does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    list_selected_layergroup: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LayerGroup"];
+                };
+            };
+            /** @description No selected layer group was found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    replace_selected_layergroup: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The updated layer group and/or layer properties */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LayerGroup"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No selected layer group was found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    delete_selected_layer_group: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No layer group selected. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_duplicate_selected_layer_group: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_move_layer_to_selected_group: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The layer to move into the group. This is the path to an existing layer, either identifier by position, or by unique id. */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid layer path given. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_add_layer_to_selected_group: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The layer to inside the group to place the new layer before. This is the path to an existing layer, either identifier by position, or by unique id. */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid layer path given. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    add_effect_selected_layergroup: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The effect to add to the layer group */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No selected layer group was found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    selected_layergroup_add_effect_offset: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect to add to the layer group */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No selected layer group was found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    delete_selected_layer_group_effect: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No effect found at the given offset or no layer group is selected */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    reset_layer_group_param: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to reset param on (1-based) */
+                "layergroup-index": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        /** @description Parameter reset options, whether to also reset animations */
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ResetParameter"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given layer group or parameter does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    reset_selected_layer_group_param: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        /** @description Parameter reset options, whether to also reset animations */
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ResetParameter"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No selected layer group found or parameter does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    layergroup_select: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to select (1-based) */
+                "layergroup-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    get_layergroup_column: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+                /** @description Column index to use (1-based) */
+                "column-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "/application/json": components["schemas"]["Column"];
+                };
+            };
+        };
+    };
+    replace_layergroup_column: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer group index to use (1-based) */
+                "layergroup-index": number;
+                /** @description Column index to use (1-based) */
+                "column-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description The updated layer group column properties */
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["Column"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group or column does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    get_layergroup_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer group id to use */
+                "layergroup-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LayerGroup"];
+                };
+            };
+            /** @description The requested layer group does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    replace_layergroup_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer group id to use */
+                "layergroup-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description The updated layer group and/or layer properties */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LayerGroup"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    delete_layergroup_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer group id to use */
+                "layergroup-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_duplicate_layer_group_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer group id to use */
+                "layergroup-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_move_layer_to_group_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer group id to use */
+                "layergroup-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description The layer to move into the group. This is the path to an existing layer, either identifier by position, or by unique id. */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid layer path given. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_add_layer_to_group_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer group id to use */
+                "layergroup-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description The layer to inside the group to place the new layer before. This is the path to an existing layer, either identifier by position, or by unique id. */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid layer path given. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    move_effect_layer_group_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer group id to use */
+                "layergroup-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect instance to move */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    move_effect_layer_group_offset_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer group id to use */
+                "layergroup-id": number;
+                /** @description The offset at which to insert the effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect instance to move */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    add_effect_layergroup_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique id for the layer group */
+                "layergroup-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect to add to the layer group */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group does not exit */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    layergroup_add_effect_by_id_offset: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique id for the layer group */
+                "layergroup-id": number;
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect to add to the layer group */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group does not exit */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    delete_layer_group_effect_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique id for the layer group */
+                "layergroup-id": number;
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No effect found at the given offset or no matching layer group is found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    reset_layer_group_param_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer group id to reset param on (1-based) */
+                "layergroup-id": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        /** @description Parameter reset options, whether to also reset animations */
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ResetParameter"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given layer group or parameter does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    layergroup_select_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique layer group id to select */
+                "layergroup-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    get_deck: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Deck index to use (1-based) */
+                "deck-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Deck"];
+                };
+            };
+            /** @description The requested deck does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    replace_deck: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Deck index to use (1-based) */
+                "deck-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description The updated deck properties */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Deck"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested deck does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    delete_deck: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Deck index to use (1-based) */
+                "deck-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested deck does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_duplicate_deck: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Deck index to use (1-based) */
+                "deck-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested deck does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked or still loading */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_add_deck: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The existing deck to add the new deck before, if not given, the new deck will be added at the end */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    reset_deck_param: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Deck index to reset param on (1-based) */
+                "deck-index": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        /** @description Parameter reset options, whether to also reset animations */
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ResetParameter"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given deck or parameter does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    deck_select: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Deck index to select (1-based) */
+                "deck-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested deck does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    get_deck_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique deck id */
+                "deck-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Deck"];
+                };
+            };
+            /** @description The requested deck does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    replace_deck_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique deck id */
+                "deck-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description The updated deck properties */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Deck"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested deck does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    delete_deck_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique deck id */
+                "deck-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested deck does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    composition_duplicate_deck_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique deck id to use */
+                "deck-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested deck does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked, or still loading */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    reset_deck_param_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique deck id to reset param on (1-based) */
+                "deck-id": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        /** @description Parameter reset options, whether to also reset animations */
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ResetParameter"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given deck or parameter does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    deck_select_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique deck id to select */
+                "deck-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested deck does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    get_clip_by_position: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Clip"];
+                };
+            };
+            /** @description The requested layer or clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    replace_clip_by_position: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description The updated clip and/or effect properties */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Clip"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer or clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    move_effect_clip: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+                /** @description Clip index to use (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect instance to move */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    move_effect_clip_offset: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+                /** @description Clip index to use (1-based) */
+                "clip-index": number;
+                /** @description The offset at which to insert the effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect instance to move */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    add_effect_clip: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect to add to the clip */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested clip does not exit */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    clip_add_effect_offset: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect to add to the clip */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification or incorrect offset */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested clip does not exit */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    delete_clip_effect: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to use (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No effect found at the given offset or no matching clip is found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    list_selected_clip: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Clip"];
+                };
+            };
+            /** @description No selected clip was found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    replace_selected_clip: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The updated clip and/or effect properties */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Clip"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No selected clip was found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    add_effect_selected_clip: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The effect to add to the clip */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No selected clip was found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    selected_clip_add_effect_offset: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect to add to the clip */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification or incorrect offset */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No selected clip was found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    delete_selected_clip_effect: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No effect found at the given offset or no clip is selected */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    reset_clip_param: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        /** @description Parameter reset options, whether to also reset animations */
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ResetParameter"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given layer, clip or parameter does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    reset_selected_clip_param: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        /** @description Parameter reset options, whether to also reset animations */
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ResetParameter"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No selected clip was found, or parameter does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    clip_select: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer or clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    clip_connect: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description Whether to connect the clip. This is analogous to whether the mouse is pressed down on the clip. If omitted, true and false are both send - as if a short click was generated */
+        requestBody?: {
+            content: {
+                "application/json": boolean;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer or clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    selected_clip_connect: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Whether to connect the clip. This is analogous to whether the mouse is pressed down on the clip. If omitted, true and false are both send - as if a short click was generated */
+        requestBody?: {
+            content: {
+                "application/json": boolean;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No selected clip found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    clip_open: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description The path to the file, in URL format, or a source URL. Special characters are to be encoded using URL-encoding.
+         *     As an example, to open a file with path `/Users/Resolume/file 1.mov` you'd use an URL like `file:///Users/Resolume/file%201.mov`.
+         *     On Windows id'd be something like `file:///C:/Users/Resolume/file%201.mov`. Note that three forward slashes are needed after the
+         *     `file:` part, even on Windows. Opening a source uses the following format: `source:///video/<source name>`, an optional
+         *     preset name can be added, `source:///video/<source name>/<preset id>`
+         *      */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given clip URL is invalid */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer or clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, the clip cannot be loaded */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/plain": string;
+                };
+            };
+        };
+    };
+    clip_openfile: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description The path to the file, in URL format. Right now only the `file` protocol is supported. Special characters
+         *     are to be encoded using URL-encoding. As an example, to open a file with path `/Users/Resolume/file 1.mov`
+         *     you'd use an URL like `file:///Users/Resolume/file%201.mov`. On Windows id'd be something like
+         *     `file:///C:/Users/Resolume/file%201.mov`. Note that three forward slashes are needed after the `file:` part,
+         *     even on Windows.
+         *      */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given clip URL is invalid */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer or clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, the clip cannot be loaded */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/plain": string;
+                };
+            };
+        };
+    };
+    selected_clip_open: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The path to the file, in URL format, or a source URL. Special characters are to be encoded using URL-encoding.
+         *     As an example, to open a file with path `/Users/Resolume/file 1.mov` you'd use an URL like `file:///Users/Resolume/file%201.mov`.
+         *     On Windows id'd be something like `file:///C:/Users/Resolume/file%201.mov`. Note that three forward slashes are needed after the
+         *     `file:` part, even on Windows. Opening a source uses the following format: `source:///video/<source name>`, an optional
+         *     preset name can be added, `source:///video/<source name>/<preset id>`
+         *      */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given clip URL is invalid */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer or clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, the clip cannot be loaded */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/plain": string;
+                };
+            };
+        };
+    };
+    selected_clip_openfile: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The path to the file, in URL format. Right now only the `file` protocol is supported. Special characters
+         *     are to be encoded using URL-encoding. As an example, to open a file with path `/Users/Resolume/file 1.mov`
+         *     you'd use an URL like `file:///Users/Resolume/file%201.mov`. On Windows id'd be something like
+         *     `file:///C:/Users/Resolume/file%201.mov`. Note that three forward slashes are needed after the `file:` part,
+         *     even on Windows.
+         *      */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given clip URL is invalid */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No selected clip found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, the clip cannot be loaded */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/plain": string;
+                };
+            };
+        };
+    };
+    clip_clear: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer or clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    selected_clip_clear: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No selected clip found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    get_clip_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique identifier for the clip to use */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Clip"];
+                };
+            };
+            /** @description The requested clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    replace_clip_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique identifier for the clip to use */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description The updated clip and/or effect properties */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Clip"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    move_effect_clip_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique clip id to use */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect instance to move */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    move_effect_clip_offset_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique clip id to use */
+                "clip-id": number;
+                /** @description The offset at which to insert the effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect instance to move */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer group does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    add_effect_clip_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique identifier for the clip to use */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect to add to the clip */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested clip does not exit */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    clip_add_effect_offset_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique identifier for the clip to use */
+                "clip-id": number;
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        /** @description The effect to add to the clip */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid effect or preset specification or incorrect offset */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested clip does not exit */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    delete_clip_effect_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique identifier for the clip to use */
+                "clip-id": number;
+                /** @description The offset at which to insert the new effect */
+                offset: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No effect found at the given offset or no matching clip is found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, e.g. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    reset_clip_param_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique identifier for the clip to reset parameter in */
+                "clip-id": number;
+                /** @description Name of the parameter to reset */
+                parameter: string;
+            };
+            cookie?: never;
+        };
+        /** @description Parameter reset options, whether to also reset animations */
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ResetParameter"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given clip or parameter does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    clip_select_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Unique id of the clip to select */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    clip_connect_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique clip idenfier */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description Whether to connect the clip. This is analogous to whether the mouse is pressed down on the clip. If omitted, true and false are both send - as if a short click was generated */
+        requestBody?: {
+            content: {
+                "application/json": boolean;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    clip_open_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique clip idenfier */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description The path to the file, in URL format, or a source URL. Special characters are to be encoded using URL-encoding.
+         *     As an example, to open a file with path `/Users/Resolume/file 1.mov` you'd use an URL like `file:///Users/Resolume/file%201.mov`.
+         *     On Windows id'd be something like `file:///C:/Users/Resolume/file%201.mov`. Note that three forward slashes are needed after the
+         *     `file:` part, even on Windows. Opening a source uses the following format: `source:///video/<source name>`, an optional
+         *     preset name can be added, `source:///video/<source name>/<preset id>`
+         *      */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given clip URL is invalid */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested layer or clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, the clip cannot be loaded */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/plain": string;
+                };
+            };
+        };
+    };
+    clip_openfile_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique clip idenfier */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description The path to the file, in URL format. Right now only the `file` protocol is supported. Special characters
+         *     are to be encoded using URL-encoding. As an example, to open a file with path `/Users/Resolume/file 1.mov`
+         *     you'd use an URL like `file:///Users/Resolume/file%201.mov`. On Windows id'd be something like
+         *     `file:///C:/Users/Resolume/file%201.mov`. Note that three forward slashes are needed after the `file:` part,
+         *     even on Windows.
+         *      */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given clip URL is invalid */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, the clip cannot be loaded */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/plain": string;
+                };
+            };
+        };
+    };
+    clip_clear_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique clip idenfier */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    list_clip_thumbnail_by_position: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "image/png": string;
+                };
+            };
+            /** @description The requested layer or clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    set_clip_thumbnail_by_position: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        /** @description Either the path to a file to load, or an uploaded file. If using a file path, it must be in URL format.
+         *     Right now only the `file` protocol is supported. Special characters are to be encoded using URL-encoding.
+         *     As an example, to open a thumbnail with path `/Users/Resolume/thumbnail 1.png` you'd use an URL like
+         *     `file:///Users/Resolume/thumbnail%201.png`. On Windows id'd be something like
+         *     `file:///C:/Users/Resolume/thumbnail%201.png`. Note that three forward slashes are needed after the `file:`
+         *     part, even on Windows. The thumbnail file must be in gif, png or jpg format.
+         *      */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+                "multipart/form-data": {
+                    /**
+                     * Format: binary
+                     * @description The image data to set as thumbnail
+                     */
+                    file?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given clip URL is invalid */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, the thumbnail cannot be loaded */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/plain": string;
+                };
+            };
+        };
+    };
+    revert_clip_thumbnail_by_position: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested clip does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, i.e. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/plain": string;
+                };
+            };
+        };
+    };
+    list_selected_clip_thumbnail: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "image/png": string;
+                };
+            };
+            /** @description No selected clip found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    set_selected_clip_thumbnail: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The path to the file, in URL format. Right now only the `file` protocol is supported. Special characters
+         *     are to be encoded using URL-encoding. As an example, to open a thumbnail with path `/Users/Resolume/thumbnail 1.png`
+         *     you'd use an URL like `file:///Users/Resolume/thumbnail%201.png`. On Windows id'd be something like
+         *     `file:///C:/Users/Resolume/thumbnail%201.png`. Note that three forward slashes are needed after the `file:` part,
+         *     even on Windows. The thumbnail file must be in gif, png or jpg format.
+         *      */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+                "multipart/form-data": {
+                    /**
+                     * Format: binary
+                     * @description The image data to set as thumbnail
+                     */
+                    file?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given clip URL is invalid */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No selected clip found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, the thumbnail cannot be loaded */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/plain": string;
+                };
+            };
+        };
+    };
+    revert_selected_clip_thumbnail: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No selected clip found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, i.e. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/plain": string;
+                };
+            };
+        };
+    };
+    get_clip_thumbnail_by_position_and_timestamp: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Layer index to retrieve (1-based) */
+                "layer-index": number;
+                /** @description Clip index to retrieve (1-based) */
+                "clip-index": number;
+                /** @description Last updated timestamp for the clip thumbnail. If given, must match the timestamp of the current thumbnail. */
+                "last-updated": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "image/png": string;
+                };
+            };
+            /** @description The requested layer or clip does not exist, or the timestamp does not match last update */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    get_last_clip_thumbnail_by_timestamp: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Last updated timestamp for the clip thumbnail. If given, must match the timestamp of the current thumbnail. */
+                "last-updated": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "image/png": string;
+                };
+            };
+            /** @description The requested layer or clip does not exist, or the timestamp does not match last update */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    list_clip_thumbnail_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique clip id to get the thumbnail for */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "image/png": string;
+                };
+            };
+            /** @description The requested clip does not exist or the timestamp does not match last update */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    set_clip_thumbnail_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique clip id to get the thumbnail for */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description The path to the file, in URL format. Right now only the `file` protocol is supported. Special characters
+         *     are to be encoded using URL-encoding. As an example, to open a thumbnail with path `/Users/Resolume/thumbnail 1.png`
+         *     you'd use an URL like `file:///Users/Resolume/thumbnail%201.png`. On Windows id'd be something like
+         *     `file:///C:/Users/Resolume/thumbnail%201.png`. Note that three forward slashes are needed after the `file:` part,
+         *     even on Windows. The thumbnail file must be in gif, png or jpg format.
+         *      */
+        requestBody?: {
+            content: {
+                "text/plain": string;
+                "multipart/form-data": {
+                    /**
+                     * Format: binary
+                     * @description The image data to set as thumbnail
+                     */
+                    file?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The given clip URL is invalid */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Requested clip not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, the thumbnail cannot be loaded */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/plain": string;
+                };
+            };
+        };
+    };
+    revert_clip_thumbnail_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique clip id to get the thumbnail for */
+                "clip-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Requested clip not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description A precondition failed, i.e. the composition is locked */
+            412: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/plain": string;
+                };
+            };
+        };
+    };
+    get_clip_thumbnail_by_id_and_timestamp: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique clip id to get the thumbnail for */
+                "clip-id": number;
+                /** @description Last updated timestamp for the clip thumbnail. If given, must match the timestamp of the current thumbnail. */
+                "last-updated": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "image/png": string;
+                };
+            };
+            /** @description The requested clip does not exist or the timestamp does not match last update */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    list_dummy_thumbnail: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "image/png": string;
+                };
+            };
+        };
+    };
+    get_effect_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique effect id to get the thumbnail for */
+                "effect-id": number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AudioEffect"] | components["schemas"]["VideoEffect"];
+                };
+            };
+            /** @description The requested effect does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    replace_effect_by_id: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The unique effect id to get the thumbnail for */
+                "effect-id": number;
+            };
+            cookie?: never;
+        };
+        /** @description The updated effect properties */
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AudioEffect"] | components["schemas"]["VideoEffect"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The input JSON cannot be deserialized or contains incompatible data */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The requested effect does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+}
+export enum PathsCompositionActionPostRequestBodyTextPlain {
+    undo = "undo",
+    redo = "redo"
+}
+export enum ParameterViewDisplay_units {
+    real = "real",
+    integer = "integer",
+    percent = "percent",
+    degrees = "degrees",
+    decibels = "decibels",
+    frames_per_second = "frames_per_second",
+    milliseconds = "milliseconds",
+    seconds = "seconds",
+    beats = "beats",
+    fractions = "fractions"
+}
+export enum ParameterViewControl_type {
+    based_on_param = "based_on_param",
+    choice_buttons = "choice_buttons",
+    choice_combobox = "choice_combobox",
+    spinner = "spinner",
+    duration_spinner = "duration_spinner",
+    slider = "slider",
+    slider_color_red = "slider_color_red",
+    slider_color_green = "slider_color_green",
+    slider_color_blue = "slider_color_blue",
+    slider_color_hue = "slider_color_hue",
+    slider_color_saturation = "slider_color_saturation",
+    slider_color_brightness = "slider_color_brightness",
+    slider_color_alpha = "slider_color_alpha",
+    slider_color_opacity = "slider_color_opacity",
+    color_pallette = "color_pallette",
+    color_picker = "color_picker",
+    rotary = "rotary",
+    text = "text",
+    text_multiline = "text_multiline"
 }

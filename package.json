@@ -5,7 +5,9 @@
   "main": "build/index.js",
   "scripts": {
     "demo": "tsc && node build/index.js && exit 1",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "schema": "openapi-typescript http://localhost:7003/api/docs/rest/swagger.yaml -o schema.ts -t --enum"
   },
   "keywords": [
     "rest",
@@ -23,7 +25,7 @@
     "ws": "^8.14.2"
   },
   "devDependencies": {
-    "openapi-typescript": "^6.7.0",
+    "openapi-typescript": "^7.0.0-rc.0",
     "typescript": "^5.0.4"
   }
 }

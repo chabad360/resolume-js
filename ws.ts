@@ -54,7 +54,7 @@ type ValueType<Type, vt extends string> = {
     [Property in keyof Type as Exclude<Property, "view">]-?: Type[Property] ;
 } & {
     valuetype: vt;
-    view?: never;
+    // view?: never;
 }
 
 export type StringParameter = ValueType<components["schemas"]["StringParameter"], "ParamString">
